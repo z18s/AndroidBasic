@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="temp_min">ТЕМП мин \n °C</string>
+    <string name="temp_max">ТЕМП макс \n °C</string>
+
+    <string name="wind">ВЕТЕР</string>
+    <string name="wind_ms">ВЕТЕР \n м/с</string>
+    <string name="wind_kmh">ВЕТЕР \n км/ч</string>
+    <string name="wind_n">С</string>
+    <string name="wind_ne">СВ</string>
+    <string name="wind_e">В</string>
+    <string name="wind_se">ЮВ</string>
+    <string name="wind_s">Ю</string>
+    <string name="wind_sw">ЮЗ</string>
+    <string name="wind_w">З</string>
+    <string name="wind_nw">СЗ</string>
+
+    <string name="day">ДЕНЬ</string>
+    <string name="d0">СЕГОДНЯ</string>
+    <string name="d1">ЗАВТРА</string>
+    <string name="d2">ДЕНЬ +2</string>
+    <string name="d3">ДЕНЬ +3</string>
+    <string name="d4">ДЕНЬ +4</string>
+    <string name="d5">ДЕНЬ +5</string>
+    <string name="d6">ДЕНЬ +6</string>
+    <string name="d7">ДЕНЬ +7</string>
+
+    <string name="city">Мой город</string>
+</resources>
