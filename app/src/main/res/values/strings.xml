@@ -1,3 +1,31 @@
 <resources>
-    <string name="app_name">Weather App</string>
+    <string name="app_name" translatable="false">Weather App</string>
+
+    <string name="celsius" translatable="false">°C</string>
+    <string name="temp_min">TEMP min \n °C</string>
+    <string name="temp_max">TEMP max \n °C</string>
+
+    <string name="wind">WIND</string>
+    <string name="wind_ms">WIND \n m/s</string>
+    <string name="wind_kmh">WIND \n km/h</string>
+    <string name="wind_n">N</string>
+    <string name="wind_ne">NE</string>
+    <string name="wind_e">E</string>
+    <string name="wind_se">SE</string>
+    <string name="wind_s">S</string>
+    <string name="wind_sw">SW</string>
+    <string name="wind_w">W</string>
+    <string name="wind_nw">NW</string>
+
+    <string name="day">DAY</string>
+    <string name="d0">TODAY</string>
+    <string name="d1">TOMORROW</string>
+    <string name="d2">DAY +2</string>
+    <string name="d3">DAY +3</string>
+    <string name="d4">DAY +4</string>
+    <string name="d5">DAY +5</string>
+    <string name="d6">DAY +6</string>
+    <string name="d7">DAY +7</string>
+
+    <string name="city">My City</string>
 </resources>
