@@ -63,322 +63,586 @@
 
         </LinearLayout>
 
-        <TableLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@color/colorTable">
+            android:layout_height="40dp"
+            android:background="@color/colorTableHeader"
+            android:orientation="horizontal"
+            android:weightSum="100">
 
-            <TableRow
-                android:background="@color/colorTable"
-                android:gravity="center_vertical"
-                android:padding="5dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:gravity="center"
+                android:text="@string/day"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="60dp"
-                    android:text="@string/day"
-                    android:textStyle="bold" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="30"
+                android:gravity="center"
+                android:text="@string/temp_max"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_span="2"
-                    android:paddingLeft="10dp"
-                    android:text="@string/temp_max"
-                    android:textAlignment="center"
-                    android:textStyle="bold" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="30"
+                android:gravity="center"
+                android:text="@string/temp_min"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_span="2"
-                    android:paddingLeft="10dp"
-                    android:text="@string/temp_min"
-                    android:textAlignment="center"
-                    android:textStyle="bold" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:gravity="center"
+                android:text="@string/wind_ms"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_span="2"
-                    android:text="@string/wind_ms"
-                    android:textAlignment="center"
-                    android:textStyle="bold" />
+        </LinearLayout>
 
-            </TableRow>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <TableRow
-                android:gravity="center_vertical"
-                android:padding="5dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/dateToday"
-                    android:text="@string/d0" />
-
-                <TextView
-                    android:paddingLeft="20dp"
-                    android:paddingRight="10dp"
-                    android:text="+29"
-                    android:textColor="@color/colorPlus"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:layout_width="40dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:contentDescription="@string/city"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/d00" />
+                    android:background="@color/colorTable"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
-                <TextView
-                    android:paddingLeft="30dp"
-                    android:paddingRight="10dp"
-                    android:text="+23"
-                    android:textColor="@color/colorPlus"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/dateToday"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:gravity="center_vertical"
+                        android:text="@string/d0" />
 
-                <ImageView
-                    android:layout_width="40dp"
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:gravity="center"
+                        android:text="+29"
+                        android:textColor="@color/colorPlus"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:contentDescription="@string/city"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/d00" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:gravity="center"
+                        android:text="+23"
+                        android:textColor="@color/colorPlus"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:contentDescription="@string/city"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/n00" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:gravity="center"
+                        android:text="4" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:gravity="center"
+                        android:text="@string/wind_se" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:contentDescription="@string/city"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/n00" />
+                    android:background="@color/colorTable"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
-                <TextView
-                    android:paddingLeft="20dp"
-                    android:text="4" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:gravity="center_vertical"
+                        android:text="@string/d1" />
 
-                <TextView
-                    android:paddingLeft="5dp"
-                    android:text="@string/wind_se" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:gravity="center"
+                        android:text="+24"
+                        android:textColor="@color/colorPlus"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-            </TableRow>
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:contentDescription="@string/city"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/d20" />
 
-            <TableRow
-                android:gravity="center_vertical"
-                android:padding="5dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:gravity="center"
+                        android:text="+19"
+                        android:textColor="@color/colorPlus"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-                <TextView android:text="@string/d1" />
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:contentDescription="@string/city"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/n21" />
 
-                <TextView
-                    android:paddingLeft="20dp"
-                    android:paddingRight="10dp"
-                    android:text="+24"
-                    android:textColor="@color/colorPlus"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:gravity="center"
+                        android:text="2" />
 
-                <ImageView
-                    android:layout_width="40dp"
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:gravity="center"
+                        android:text="@string/wind_s" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:contentDescription="@string/city"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/d20" />
+                    android:background="@color/colorTable"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
-                <TextView
-                    android:paddingLeft="30dp"
-                    android:paddingRight="10dp"
-                    android:text="+19"
-                    android:textColor="@color/colorPlus"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:gravity="center_vertical"
+                        android:text="@string/d2" />
 
-                <ImageView
-                    android:layout_width="40dp"
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:gravity="center"
+                        android:text="+26"
+                        android:textColor="@color/colorPlus"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:contentDescription="@string/city"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/d10" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:gravity="center"
+                        android:text="+20"
+                        android:textColor="@color/colorPlus"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:contentDescription="@string/city"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/n10" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:gravity="center"
+                        android:text="4" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:gravity="center"
+                        android:text="@string/wind_e" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:contentDescription="@string/city"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/n21" />
+                    android:background="@color/colorTable"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
-                <TextView
-                    android:paddingLeft="20dp"
-                    android:text="2" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:gravity="center_vertical"
+                        android:text="@string/d3" />
 
-                <TextView
-                    android:paddingLeft="5dp"
-                    android:text="@string/wind_s" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:gravity="center"
+                        android:text="..."
+                        android:textColor="@color/colorPlus"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-            </TableRow>
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:contentDescription="@string/city"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/z10" />
 
-            <TableRow
-                android:gravity="center_vertical"
-                android:padding="5dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:gravity="center"
+                        android:text="..."
+                        android:textColor="@color/colorPlus"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-                <TextView android:text="@string/d2" />
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:contentDescription="@string/city"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/z10" />
 
-                <TextView
-                    android:paddingLeft="20dp"
-                    android:paddingRight="10dp"
-                    android:text="+26"
-                    android:textColor="@color/colorPlus"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:gravity="center"
+                        android:text="3" />
 
-                <ImageView
-                    android:layout_width="40dp"
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:gravity="center"
+                        android:text="@string/wind_nw" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:contentDescription="@string/city"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/d10" />
+                    android:background="@color/colorTable"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
-                <TextView
-                    android:paddingLeft="30dp"
-                    android:paddingRight="10dp"
-                    android:text="+20"
-                    android:textColor="@color/colorPlus"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:gravity="center_vertical"
+                        android:text="@string/d4" />
 
-                <ImageView
-                    android:layout_width="40dp"
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:gravity="center"
+                        android:text="..."
+                        android:textColor="@color/colorPlus"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:contentDescription="@string/city"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/z10" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:gravity="center"
+                        android:text="..."
+                        android:textColor="@color/colorPlus"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:contentDescription="@string/city"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/z10" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:gravity="center"
+                        android:text="4" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:gravity="center"
+                        android:text="@string/wind_se" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:contentDescription="@string/city"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/n10" />
+                    android:background="@color/colorTable"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
-                <TextView
-                    android:paddingLeft="20dp"
-                    android:text="4" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:gravity="center_vertical"
+                        android:text="@string/d5" />
 
-                <TextView
-                    android:paddingLeft="5dp"
-                    android:text="@string/wind_e" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:gravity="center"
+                        android:text="..."
+                        android:textColor="@color/colorPlus"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-            </TableRow>
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:contentDescription="@string/city"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/z10" />
 
-            <TableRow
-                android:gravity="center_vertical"
-                android:padding="5dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:gravity="center"
+                        android:text="..."
+                        android:textColor="@color/colorPlus"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-                <TextView android:text="@string/d3" />
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:contentDescription="@string/city"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/z10" />
 
-                <TextView
-                    android:paddingLeft="20dp"
-                    android:paddingRight="10dp"
-                    android:text="..."
-                    android:textColor="@color/colorPlus"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:gravity="center"
+                        android:text="4" />
 
-                <ImageView
-                    android:layout_width="40dp"
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:gravity="center"
+                        android:text="@string/wind_se" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:contentDescription="@string/city"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/z10" />
+                    android:background="@color/colorTable"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
-                <TextView
-                    android:paddingLeft="30dp"
-                    android:paddingRight="10dp"
-                    android:text="..."
-                    android:textColor="@color/colorPlus"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:gravity="center_vertical"
+                        android:text="@string/d6" />
 
-                <ImageView
-                    android:layout_width="40dp"
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:gravity="center"
+                        android:text="..."
+                        android:textColor="@color/colorPlus"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:contentDescription="@string/city"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/z10" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:gravity="center"
+                        android:text="..."
+                        android:textColor="@color/colorPlus"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:contentDescription="@string/city"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/z10" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:gravity="center"
+                        android:text="4" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:gravity="center"
+                        android:text="@string/wind_se" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:contentDescription="@string/city"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/z10" />
+                    android:background="@color/colorTable"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
-                <TextView
-                    android:paddingLeft="20dp"
-                    android:text="3" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:gravity="center_vertical"
+                        android:text="@string/d7" />
 
-                <TextView
-                    android:paddingLeft="5dp"
-                    android:text="@string/wind_nw" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:gravity="center"
+                        android:text="..."
+                        android:textColor="@color/colorPlus"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-            </TableRow>
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:contentDescription="@string/city"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/z10" />
 
-            <TableRow
-                android:gravity="center_vertical"
-                android:padding="5dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:gravity="center"
+                        android:text="..."
+                        android:textColor="@color/colorPlus"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-                <TextView android:text="@string/d4" />
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:contentDescription="@string/city"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/z10" />
 
-                <TextView
-                    android:paddingLeft="20dp"
-                    android:paddingRight="10dp"
-                    android:text="..."
-                    android:textColor="@color/colorPlus"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:gravity="center"
+                        android:text="4" />
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:contentDescription="@string/city"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/z10" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:gravity="center"
+                        android:text="@string/wind_se" />
 
-                <TextView
-                    android:paddingLeft="30dp"
-                    android:paddingRight="10dp"
-                    android:text="..."
-                    android:textColor="@color/colorPlus"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:contentDescription="@string/city"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/z10" />
-
-                <TextView
-                    android:paddingLeft="20dp"
-                    android:text="4" />
-
-                <TextView
-                    android:paddingLeft="5dp"
-                    android:text="@string/wind_se" />
-
-            </TableRow>
-
-            <TableRow
-                android:gravity="center_vertical"
-                android:padding="5dp">
-
-                <TextView android:text="@string/d5" />
-
-                <TextView
-                    android:paddingLeft="20dp"
-                    android:paddingRight="10dp"
-                    android:text="..."
-                    android:textColor="@color/colorPlus"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:contentDescription="@string/city"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/z10" />
-
-                <TextView
-                    android:paddingLeft="30dp"
-                    android:paddingRight="10dp"
-                    android:text="..."
-                    android:textColor="@color/colorPlus"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:contentDescription="@string/city"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/z10" />
-
-                <TextView
-                    android:paddingLeft="20dp"
-                    android:text="4" />
-
-                <TextView
-                    android:paddingLeft="5dp"
-                    android:text="@string/wind_se" />
-
-            </TableRow>
-        </TableLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
