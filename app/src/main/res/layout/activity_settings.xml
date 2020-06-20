@@ -99,6 +99,5 @@
                 android:textSize="15sp" />
 
         </RadioGroup>
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
