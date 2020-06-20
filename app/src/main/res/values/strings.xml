@@ -19,7 +19,7 @@
 
     <string name="day">DAY</string>
     <string name="d0">TODAY</string>
-    <string name="d1">TOMORROW</string>
+    <string name="d1">DAY +1</string>
     <string name="d2">DAY +2</string>
     <string name="d3">DAY +3</string>
     <string name="d4">DAY +4</string>
@@ -28,4 +28,12 @@
     <string name="d7">DAY +7</string>
 
     <string name="city">My City</string>
+
+    <string name="dw1">Mo</string>
+    <string name="dw2">Tu</string>
+    <string name="dw3">We</string>
+    <string name="dw4">Th</string>
+    <string name="dw5">Fr</string>
+    <string name="dw6">Sa</string>
+    <string name="dw7">Su</string>
 </resources>
