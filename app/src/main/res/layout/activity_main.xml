@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,52 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorTable"
-            android:gravity="center"
-            android:text="@string/city"
-            android:textSize="30sp" />
-
-        <TextView
-            android:id="@+id/dateTodayFull"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/d0"
-            android:textSize="15sp" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+25"
-                android:textColor="@color/colorPlus"
-                android:textSize="60sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/celsius"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:contentDescription="@string/city"
-                android:padding="20dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/d00" />
-
-        </LinearLayout>
+        <include layout="@layout/header" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -121,11 +77,18 @@
                     android:weightSum="100">
 
                     <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="6"
+                        android:gravity="center"
+                        android:text="@string/dw6" />
+
+                    <TextView
                         android:id="@+id/dateToday"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="20"
-                        android:gravity="center_vertical"
+                        android:layout_weight="14"
+                        android:gravity="center"
                         android:text="@string/d0" />
 
                     <TextView
@@ -190,8 +153,15 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="20"
-                        android:gravity="center_vertical"
+                        android:layout_weight="6"
+                        android:gravity="center"
+                        android:text="@string/dw7" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="14"
+                        android:gravity="center"
                         android:text="@string/d1" />
 
                     <TextView
@@ -256,8 +226,15 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="20"
-                        android:gravity="center_vertical"
+                        android:layout_weight="6"
+                        android:gravity="center"
+                        android:text="@string/dw1" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="14"
+                        android:gravity="center"
                         android:text="@string/d2" />
 
                     <TextView
@@ -322,8 +299,15 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="20"
-                        android:gravity="center_vertical"
+                        android:layout_weight="6"
+                        android:gravity="center"
+                        android:text="@string/dw2" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="14"
+                        android:gravity="center"
                         android:text="@string/d3" />
 
                     <TextView
@@ -388,8 +372,15 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="20"
-                        android:gravity="center_vertical"
+                        android:layout_weight="6"
+                        android:gravity="center"
+                        android:text="@string/dw3" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="14"
+                        android:gravity="center"
                         android:text="@string/d4" />
 
                     <TextView
@@ -454,8 +445,15 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="20"
-                        android:gravity="center_vertical"
+                        android:layout_weight="6"
+                        android:gravity="center"
+                        android:text="@string/dw4" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="14"
+                        android:gravity="center"
                         android:text="@string/d5" />
 
                     <TextView
@@ -520,8 +518,15 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="20"
-                        android:gravity="center_vertical"
+                        android:layout_weight="6"
+                        android:gravity="center"
+                        android:text="@string/dw5" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="14"
+                        android:gravity="center"
                         android:text="@string/d6" />
 
                     <TextView
@@ -586,8 +591,15 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="20"
-                        android:gravity="center_vertical"
+                        android:layout_weight="6"
+                        android:gravity="center"
+                        android:text="@string/dw6" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="14"
+                        android:gravity="center"
                         android:text="@string/d7" />
 
                     <TextView
@@ -644,5 +656,4 @@
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,7 @@
 
     <string name="day">ДЕНЬ</string>
     <string name="d0">СЕГОДНЯ</string>
-    <string name="d1">ЗАВТРА</string>
+    <string name="d1">ДЕНЬ +1</string>
     <string name="d2">ДЕНЬ +2</string>
     <string name="d3">ДЕНЬ +3</string>
     <string name="d4">ДЕНЬ +4</string>
@@ -25,5 +25,11 @@
     <string name="d6">ДЕНЬ +6</string>
     <string name="d7">ДЕНЬ +7</string>
 
-    <string name="city">Мой город</string>
+    <string name="dw1">Пн</string>
+    <string name="dw2">Вт</string>
+    <string name="dw3">Ср</string>
+    <string name="dw4">Чт</string>
+    <string name="dw5">Пт</string>
+    <string name="dw6">Сб</string>
+    <string name="dw7">Вс</string>
 </resources>
