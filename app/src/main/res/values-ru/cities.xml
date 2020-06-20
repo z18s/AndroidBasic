@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="city">Мой город</string>
+    <string name="search">Поиск</string>
+    <string name="swap_city_text">Выберите город:</string>
+
+    <string name="button_select">Выбрать</string>
+
+    <string-array name="cities">
+        <item>Москва</item>
+        <item>Рим</item>
+        <item>Лондон</item>
+        <item>Нью-Йорк</item>
+        <item>Лос Анджелес</item>
+        <item>Токио</item>
+    </string-array>
+</resources>

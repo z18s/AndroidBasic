@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings">Настройки</string>
+
+    <string name="switch_pressure">Показывать атмосферное давление</string>
+
+    <string name="radio_temp">Шкала температуры:</string>
+    <string name="radio_temp_c">Цельсия</string>
+    <string name="radio_temp_f">Фаренгейта</string>
+
+    <string name="radio_wind">Скорость ветра:</string>
+    <string name="radio_wind_m">м/с</string>
+    <string name="radio_wind_km">км/ч</string>
+</resources>
