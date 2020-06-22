@@ -38,19 +38,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onRestoreInstanceState(Bundle saveInstanceState) {
+        super.onRestoreInstanceState(saveInstanceState);
 
-        Toast.makeText(getApplicationContext(), "Activity stopped", Toast.LENGTH_SHORT).show();
-        Log.d("INFO", "Activity stopped");
+        Toast.makeText(getApplicationContext(), "Activity restored", Toast.LENGTH_SHORT).show();
+        Log.d("INFO", "Activity restored");
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onResume() {
+        super.onResume();
 
-        Toast.makeText(getApplicationContext(), "Activity destroyed", Toast.LENGTH_SHORT).show();
-        Log.d("INFO", "Activity destroyed");
+        Toast.makeText(getApplicationContext(), "Activity resumed", Toast.LENGTH_SHORT).show();
+        Log.d("INFO", "Activity resumed");
     }
 
     @Override
@@ -62,10 +62,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onSaveInstanceState(Bundle saveInstanceState) {
+        super.onSaveInstanceState(saveInstanceState);
 
-        Toast.makeText(getApplicationContext(), "Activity resumed", Toast.LENGTH_SHORT).show();
-        Log.d("INFO", "Activity resumed");
+        Toast.makeText(getApplicationContext(), "Activity saved", Toast.LENGTH_SHORT).show();
+        Log.d("INFO", "Activity saved");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        Toast.makeText(getApplicationContext(), "Activity stopped", Toast.LENGTH_SHORT).show();
+        Log.d("INFO", "Activity stopped");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        Toast.makeText(getApplicationContext(), "Activity restarted", Toast.LENGTH_SHORT).show();
+        Log.d("INFO", "Activity restarted");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        Toast.makeText(getApplicationContext(), "Activity destroyed", Toast.LENGTH_SHORT).show();
+        Log.d("INFO", "Activity destroyed");
     }
 }
