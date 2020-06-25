@@ -4,92 +4,99 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.weatherapp.databinding.ActivityMainBinding;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
+    ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(LayoutInflater.from(this));
+        setContentView(binding.getRoot());
 
+        fillDate();
+
+
+
+        //log("Activity created");
+    }
+
+    private void fillDate() {
         Date dateNow = new Date();
 
         TextView dateTodayFull = findViewById(R.id.dateTodayFull);
         dateTodayFull.setText(new SimpleDateFormat("dd/MM/yyyy").format(dateNow));
 
-        TextView dateToday = findViewById(R.id.dateToday);
-        dateToday.setText(new SimpleDateFormat("dd/MM").format(dateNow));
-
-        Toast.makeText(getApplicationContext(), "Activity created", Toast.LENGTH_SHORT).show();
-        Log.d("INFO", "Activity created");
+        binding.dateToday.setText(new SimpleDateFormat("dd/MM").format(dateNow));
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        Toast.makeText(getApplicationContext(), "Activity started", Toast.LENGTH_SHORT).show();
-        Log.d("INFO", "Activity started");
+        //log("Activity started");
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle saveInstanceState) {
         super.onRestoreInstanceState(saveInstanceState);
 
-        Toast.makeText(getApplicationContext(), "Activity restored", Toast.LENGTH_SHORT).show();
-        Log.d("INFO", "Activity restored");
+        //log("Activity restored");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        Toast.makeText(getApplicationContext(), "Activity resumed", Toast.LENGTH_SHORT).show();
-        Log.d("INFO", "Activity resumed");
+        //log("Activity resumed");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
 
-        Toast.makeText(getApplicationContext(), "Activity paused", Toast.LENGTH_SHORT).show();
-        Log.d("INFO", "Activity paused");
+        //log("Activity paused");
     }
 
     @Override
     protected void onSaveInstanceState(Bundle saveInstanceState) {
         super.onSaveInstanceState(saveInstanceState);
 
-        Toast.makeText(getApplicationContext(), "Activity saved", Toast.LENGTH_SHORT).show();
-        Log.d("INFO", "Activity saved");
+        //log("Activity saved");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
 
-        Toast.makeText(getApplicationContext(), "Activity stopped", Toast.LENGTH_SHORT).show();
-        Log.d("INFO", "Activity stopped");
+        //log("Activity stopped");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
 
-        Toast.makeText(getApplicationContext(), "Activity restarted", Toast.LENGTH_SHORT).show();
-        Log.d("INFO", "Activity restarted");
+        //log("Activity restarted");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
 
-        Toast.makeText(getApplicationContext(), "Activity destroyed", Toast.LENGTH_SHORT).show();
-        Log.d("INFO", "Activity destroyed");
+        //log("Activity destroyed");
+    }
+
+    private void log(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        Log.d("INFO", message);
     }
 }

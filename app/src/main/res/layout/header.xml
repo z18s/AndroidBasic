@@ -34,7 +34,7 @@
                 android:layout_width="0dp"
                 android:layout_height="20dp"
                 android:layout_weight="10"
-                android:contentDescription="@string/search"
+                android:contentDescription="@string/city_swap_activity"
                 android:scaleType="fitCenter"
                 android:src="@drawable/icon_search" />
 
@@ -43,7 +43,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="10"
-                android:contentDescription="@string/settings"
+                android:contentDescription="@string/settings_activity"
                 android:scaleType="fitCenter"
                 android:src="@drawable/icon_setting" />
 

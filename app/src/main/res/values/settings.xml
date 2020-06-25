@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="settings">Settings</string>
+    <string name="settings_activity">Settings</string>
 
     <string name="switch_pressure">Show atmosphere pressure</string>
 
