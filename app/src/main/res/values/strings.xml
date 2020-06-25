@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name" translatable="false">Weather App</string>
 
+    <string name="today_about_button" translatable="false">?</string>
+    <string name="today_about_url">https://en.wikipedia.org/wiki/</string>
+
     <string name="celsius" translatable="false">°C</string>
     <string name="temp_min">TEMP min \n °C</string>
     <string name="temp_max">TEMP max \n °C</string>
