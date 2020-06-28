@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="today_about_url">https://ru.wikipedia.org/wiki/</string>
+
     <string name="temp_min">ТЕМП мин \n °C</string>
     <string name="temp_max">ТЕМП макс \n °C</string>
 
