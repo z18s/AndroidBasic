@@ -17,9 +17,9 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-    ActivityMainBinding binding;
+    private ActivityMainBinding binding;
 
-    Date dateNow = new Date();
+    private Date dateNow = new Date();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

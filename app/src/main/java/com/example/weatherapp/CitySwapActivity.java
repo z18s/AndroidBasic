@@ -11,7 +11,7 @@ import com.example.weatherapp.databinding.ActivityCitiesBinding;
 
 public class CitySwapActivity extends Activity {
 
-    ActivityCitiesBinding binding;
+    private ActivityCitiesBinding binding;
 
     private String currentCity = null;
     private String chosenCity = null;

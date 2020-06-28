@@ -10,7 +10,7 @@ import com.example.weatherapp.databinding.ActivitySettingsBinding;
 
 public class SettingsActivity extends Activity {
 
-    ActivitySettingsBinding binding;
+    private ActivitySettingsBinding binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
