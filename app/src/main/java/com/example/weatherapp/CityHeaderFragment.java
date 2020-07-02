@@ -42,7 +42,8 @@ public class CityHeaderFragment extends Fragment implements Observer {
 
     @Override
     public void updateCurrentCity() {
-        binding.currentCity.setText(MainActivity.city.getName());
+        String cityName = MainActivity.city.getName();
+        binding.currentCity.setText(cityName);
     }
 
     private void swapCityListener() {
