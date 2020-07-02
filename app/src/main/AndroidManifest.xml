@@ -20,8 +20,5 @@
         <activity android:name=".SettingsActivity" android:label="@string/settings_activity">
         </activity>
 
-        <activity android:name=".CitySwapActivity" android:label="@string/city_swap_activity">
-        </activity>
-
     </application>
 </manifest>

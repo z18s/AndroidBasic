@@ -1,25 +1,27 @@
 package com.example.weatherapp;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.net.Uri;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.weatherapp.databinding.ActivityMainBinding;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.example.weatherapp.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
 
-    private Date dateNow = new Date();
+    private Publisher publisher = new Publisher();
+
+    static CurrentCity city = new CurrentCity();
+
+    private CityHeaderFragment cityHeaderFragment;
+    private CityTempTodayFragment cityTempTodayFragment;
+    private CityTempListFragment cityTempListFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,115 +29,72 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
 
-        fillDate();
-
-        swapCityListener();
-        appSettingsListener();
-        todayAboutListener();
-
-        //log("Activity created");
+        initFragments();
+        startFragmentsTransaction();
     }
 
-    private void fillDate() {
-        binding.dateTodayFull.setText(new SimpleDateFormat("dd/MM/yyyy").format(dateNow));
-        binding.dateToday.setText(new SimpleDateFormat("dd/MM").format(dateNow));
+    private void initFragments() {
+        String defaultCityName = ((TextView) findViewById(R.id.currentCity)).getText().toString();
+        city.setName(defaultCityName, false);
+
+        cityHeaderFragment = CityHeaderFragment.create();
+        publisher.subscribe(cityHeaderFragment);
+
+        city.setPublisher(publisher);
+
+        cityTempTodayFragment = CityTempTodayFragment.create();
+        cityTempListFragment = CityTempListFragment.create();
     }
 
-    private void swapCityListener() {
-        binding.swapCity.setOnClickListener((view) -> {
-            Intent intent = new Intent(this, CitySwapActivity.class);
-            intent.putExtra(Constants.CURRENT_CITY, R.id.currentCity);
-            startActivityForResult(intent, Constants.REQ_CODE_SWAP_CITY);
-        });
+    private void startFragmentsTransaction() {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        setFragments(ft);
+        ft.commit();
     }
 
-    private void appSettingsListener() {
-        binding.appSettings.setOnClickListener((view) -> {
-            Intent intent = new Intent(this, SettingsActivity.class);
-            startActivityForResult(intent, Constants.REQ_CODE_SETTINGS);
-        });
-    }
-
-    private void todayAboutListener() {
-        binding.buttonTodayAbout.setOnClickListener((view) -> {
-            String url = (String) getResources().getText(R.string.today_about_url);
-            String date = new SimpleDateFormat("d MMMM").format(dateNow);
-            Uri uri = Uri.parse(url + date);
-
-            Intent browser = new Intent(Intent.ACTION_VIEW, uri);
-            startActivity(browser);
-        });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode != Constants.REQ_CODE_SWAP_CITY) {
-            super.onActivityResult(requestCode, resultCode, data);
-            return;
-        }
-
-        if (resultCode == RESULT_OK) {
-            String chosenCity = data.getStringExtra(Constants.CHOSEN_CITY);
-            if (chosenCity != null) {
-                binding.currentCity.setText(chosenCity);
-            }
-        }
+    void setFragments(FragmentTransaction ft) {
+        ft.add(R.id.fragment_container_main, cityTempTodayFragment);
+        ft.add(R.id.fragment_container_main, cityTempListFragment);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
-        //log("Activity started");
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle saveInstanceState) {
         super.onRestoreInstanceState(saveInstanceState);
-
-        //log("Activity restored");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
-        //log("Activity resumed");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-
-        //log("Activity paused");
     }
 
     @Override
     protected void onSaveInstanceState(Bundle saveInstanceState) {
         super.onSaveInstanceState(saveInstanceState);
-
-        //log("Activity saved");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-
-        //log("Activity stopped");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-
-        //log("Activity restarted");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
-        //log("Activity destroyed");
     }
 
     private void log(String message) {
