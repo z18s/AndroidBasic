@@ -1,5 +1,6 @@
 package com.example.weatherapp;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;

@@ -1,5 +1,6 @@
 package com.example.weatherapp;
 
+import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.weatherapp.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ITransactionController {
 
     private ActivityMainBinding binding;
 
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         initFragments();
-        startFragmentsTransaction();
+        startAddFragmentsTransaction(cityTempTodayFragment, cityTempListFragment);
     }
 
     private void initFragments() {
@@ -46,15 +47,33 @@ public class MainActivity extends AppCompatActivity {
         cityTempListFragment = CityTempListFragment.create();
     }
 
-    private void startFragmentsTransaction() {
+    @Override
+    public void startAddFragmentsTransaction(Fragment... fragments) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-        setFragments(ft);
+        for (Fragment fragment : fragments) {
+            ft.add(R.id.fragment_container_main, fragment);
+        }
         ft.commit();
     }
 
-    void setFragments(FragmentTransaction ft) {
-        ft.add(R.id.fragment_container_main, cityTempTodayFragment);
-        ft.add(R.id.fragment_container_main, cityTempListFragment);
+    @Override
+    public void startReplaceFragmentsTransaction(Fragment... fragments) {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        for (Fragment fragment : fragments) {
+            ft.replace(R.id.fragment_container_main, fragment);
+        }
+        ft.addToBackStack(null);
+        ft.commit();
+    }
+
+    @Override
+    public void startRemoveFragmentsTransaction(Fragment... fragments) {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        for (Fragment fragment : fragments) {
+            ft.remove(fragment);
+        }
+        ft.addToBackStack(null);
+        ft.commit();
     }
 
     @Override

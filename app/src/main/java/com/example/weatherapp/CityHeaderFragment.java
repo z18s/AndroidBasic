@@ -1,7 +1,7 @@
 package com.example.weatherapp;
 
+import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,12 +16,12 @@ import com.example.weatherapp.databinding.FragmentCityHeaderBinding;
 public class CityHeaderFragment extends Fragment implements Observer {
 
     private FragmentCityHeaderBinding binding;
+    private ITransactionController transactionController;
 
     private CitySwapFragment citySwapFragment;
 
     public static CityHeaderFragment create() {
-        CityHeaderFragment fragment = new CityHeaderFragment();
-        return fragment;
+        return new CityHeaderFragment();
     }
 
     @Nullable
@@ -41,6 +41,13 @@ public class CityHeaderFragment extends Fragment implements Observer {
     }
 
     @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        transactionController = (ITransactionController) activity;
+    }
+
+    @Override
     public void updateCurrentCity() {
         String cityName = MainActivity.city.getName();
         binding.currentCity.setText(cityName);
@@ -48,11 +55,8 @@ public class CityHeaderFragment extends Fragment implements Observer {
 
     private void swapCityListener() {
         binding.swapCity.setOnClickListener((view) -> {
-            FragmentTransaction ft = getFragmentManager().beginTransaction();
             initCitySwapFragment();
-            ft.replace(R.id.fragment_container_main, citySwapFragment);
-            ft.addToBackStack(null);
-            ft.commit();
+            transactionController.startReplaceFragmentsTransaction(citySwapFragment);
         });
     }
 

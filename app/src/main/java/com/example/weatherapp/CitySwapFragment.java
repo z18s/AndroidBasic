@@ -1,7 +1,7 @@
 package com.example.weatherapp;
 
+import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +15,12 @@ import com.example.weatherapp.databinding.FragmentCitySwapBinding;
 public class CitySwapFragment extends Fragment {
 
     private FragmentCitySwapBinding binding;
+    private ITransactionController transactionController;
 
     private String chosenCity = null;
 
     public static CitySwapFragment create() {
-        CitySwapFragment fragment = new CitySwapFragment();
-        return fragment;
+        return new CitySwapFragment();
     }
 
     @Nullable
@@ -39,6 +39,13 @@ public class CitySwapFragment extends Fragment {
 
         selectCityByButton();
         selectCityByList();
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        transactionController = (ITransactionController) activity;
     }
 
     private void initEditTextField() {
@@ -70,11 +77,7 @@ public class CitySwapFragment extends Fragment {
         if (chosenCity != null && !chosenCity.equals("")) {
             MainActivity.city.setName(chosenCity);
             chosenCity = null;
-            FragmentTransaction ft = getFragmentManager().beginTransaction();
-            ft.remove(this);
-            ((MainActivity) getActivity()).setFragments(ft);
-            ft.addToBackStack(null);
-            ft.commit();
+            transactionController.startRemoveFragmentsTransaction(this);
         }
     }
 
