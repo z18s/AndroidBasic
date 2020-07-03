@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.weatherapp.databinding.ActivityMainBinding;
 
@@ -31,7 +32,8 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
         setContentView(binding.getRoot());
 
         initFragments();
-        startAddFragmentsTransaction(cityTempTodayFragment, cityTempListFragment);
+
+        setDefaultFragments();
     }
 
     private void initFragments() {
@@ -39,11 +41,12 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
         city.setName(defaultCityName, false);
 
         cityHeaderFragment = CityHeaderFragment.create();
+        cityTempTodayFragment = CityTempTodayFragment.create();
         publisher.subscribe(cityHeaderFragment);
+        publisher.subscribe(cityTempTodayFragment);
 
         city.setPublisher(publisher);
 
-        cityTempTodayFragment = CityTempTodayFragment.create();
         cityTempListFragment = CityTempListFragment.create();
     }
 
@@ -57,11 +60,9 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
     }
 
     @Override
-    public void startReplaceFragmentsTransaction(Fragment... fragments) {
+    public void startReplaceFragmentsTransaction(Fragment fragment) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-        for (Fragment fragment : fragments) {
-            ft.replace(R.id.fragment_container_main, fragment);
-        }
+        ft.replace(R.id.fragment_container_main, fragment);
         ft.addToBackStack(null);
         ft.commit();
     }
@@ -74,6 +75,22 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
         }
         ft.addToBackStack(null);
         ft.commit();
+    }
+
+    @Override
+    public void startPopBackStack() {
+        FragmentManager fm = getSupportFragmentManager();
+        fm.popBackStack();
+    }
+
+    @Override
+    public void setDefaultFragments() {
+        startAddFragmentsTransaction(cityTempListFragment);
+    }
+
+    @Override
+    public void resetDefaultFragments() {
+        startReplaceFragmentsTransaction(cityTempListFragment);
     }
 
     @Override

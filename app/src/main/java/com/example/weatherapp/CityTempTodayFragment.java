@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 import com.example.weatherapp.databinding.FragmentCityTempTodayBinding;
 
-public class CityTempTodayFragment extends Fragment {
+public class CityTempTodayFragment extends Fragment implements Observer {
 
     private FragmentCityTempTodayBinding binding;
 
@@ -38,6 +38,10 @@ public class CityTempTodayFragment extends Fragment {
         fillDate();
 
         todayAboutListener();
+    }
+
+    @Override
+    public void updateCurrentCity() {
     }
 
     private void fillDate() {

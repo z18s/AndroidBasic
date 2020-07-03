@@ -62,22 +62,22 @@ public class CitySwapFragment extends Fragment {
     private void selectCityByButton() {
         binding.buttonSwapCity.setOnClickListener((view) -> {
             chosenCity = binding.textCitySelect.getText().toString();
-            returnToMainActivity();
+            returnBack();
         });
     }
 
     private void selectCityByList() {
         binding.citiesList.setOnItemClickListener((adapterView, view, i, l) -> {
             chosenCity = binding.citiesList.getItemAtPosition(i).toString();
-            returnToMainActivity();
+            returnBack();
         });
     }
 
-    private void returnToMainActivity() {
+    private void returnBack() {
         if (chosenCity != null && !chosenCity.equals("")) {
             MainActivity.city.setName(chosenCity);
             chosenCity = null;
-            transactionController.startRemoveFragmentsTransaction(this);
+            transactionController.resetDefaultFragments();
         }
     }
 

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -50,7 +51,8 @@ public class CityHeaderFragment extends Fragment implements Observer {
     @Override
     public void updateCurrentCity() {
         String cityName = MainActivity.city.getName();
-        binding.currentCity.setText(cityName);
+        ((TextView) getActivity().findViewById(R.id.currentCity)).setText(cityName);
+        //binding.currentCity.setText(cityName);
     }
 
     private void swapCityListener() {

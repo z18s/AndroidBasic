@@ -12,6 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <fragment
+        android:name="com.example.weatherapp.CityTempTodayFragment"
+        android:id="@+id/fragment_container_current_temp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <LinearLayout
         android:id="@+id/fragment_container_main"
         android:layout_width="match_parent"
