@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.weatherapp.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity implements ITransactionController {
+public class MainActivity extends AppCompatActivity implements ITransactionController, Observer {
 
     private ActivityMainBinding binding;
 
@@ -37,17 +37,22 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
     }
 
     private void initFragments() {
-        String defaultCityName = ((TextView) findViewById(R.id.currentCity)).getText().toString();
-        city.setName(defaultCityName, false);
+        city.setName(getCurrentCityText(), false);
+
+        publisher.subscribe(this);
+        city.setPublisher(publisher);
 
         cityHeaderFragment = CityHeaderFragment.create();
         cityTempTodayFragment = CityTempTodayFragment.create();
-        publisher.subscribe(cityHeaderFragment);
-        publisher.subscribe(cityTempTodayFragment);
-
-        city.setPublisher(publisher);
-
         cityTempListFragment = CityTempListFragment.create();
+    }
+
+    private String getCurrentCityText() {
+        return ((TextView) findViewById(R.id.currentCity)).getText().toString();
+    }
+
+    private void updateCurrentCityText() {
+        ((TextView) findViewById(R.id.currentCity)).setText(city.getName());
     }
 
     @Override
@@ -91,6 +96,11 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
     @Override
     public void resetDefaultFragments() {
         startReplaceFragmentsTransaction(cityTempListFragment);
+    }
+
+    @Override
+    public void updateCurrentCity() {
+        updateCurrentCityText();
     }
 
     @Override

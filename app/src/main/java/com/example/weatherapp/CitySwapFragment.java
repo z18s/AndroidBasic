@@ -48,6 +48,12 @@ public class CitySwapFragment extends Fragment {
         transactionController = (ITransactionController) activity;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
     private void initEditTextField() {
         String cityName = MainActivity.city.getName();
         binding.textCitySelect.setText(cityName);
