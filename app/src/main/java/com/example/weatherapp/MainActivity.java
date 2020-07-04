@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
         return ((TextView) findViewById(R.id.currentCity)).getText().toString();
     }
 
-    private void updateCurrentCityText() {
-        ((TextView) findViewById(R.id.currentCity)).setText(city.getName());
+    private void setCurrentCityText(String name) {
+        ((TextView) findViewById(R.id.currentCity)).setText(name);
     }
 
     @Override
@@ -100,47 +100,7 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
 
     @Override
     public void updateCurrentCity() {
-        updateCurrentCityText();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle saveInstanceState) {
-        super.onRestoreInstanceState(saveInstanceState);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle saveInstanceState) {
-        super.onSaveInstanceState(saveInstanceState);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+        setCurrentCityText(city.getName());
     }
 
     private void log(String message) {
