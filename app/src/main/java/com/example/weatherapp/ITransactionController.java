@@ -6,8 +6,8 @@ public interface ITransactionController {
     void setDefaultFragments();
     void resetDefaultFragments();
 
-    void startAddFragmentsTransaction(Fragment... fragments);
-    void startRemoveFragmentsTransaction(Fragment... fragments);
+    void startAddFragmentsTransaction(Fragment fragment);
+    void startRemoveFragmentsTransaction(Fragment fragment);
     void startReplaceFragmentsTransaction(Fragment fragment);
 
     void startPopBackStack();

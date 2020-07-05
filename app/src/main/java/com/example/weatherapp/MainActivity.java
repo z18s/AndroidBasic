@@ -9,7 +9,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 
 import com.example.weatherapp.databinding.ActivityMainBinding;
 
@@ -56,11 +55,9 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
     }
 
     @Override
-    public void startAddFragmentsTransaction(Fragment... fragments) {
+    public void startAddFragmentsTransaction(Fragment fragment) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-        for (Fragment fragment : fragments) {
-            ft.add(R.id.fragment_container_main, fragment);
-        }
+        ft.add(R.id.fragment_container_main, fragment);
         ft.commit();
     }
 
@@ -73,19 +70,16 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
     }
 
     @Override
-    public void startRemoveFragmentsTransaction(Fragment... fragments) {
+    public void startRemoveFragmentsTransaction(Fragment fragment) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-        for (Fragment fragment : fragments) {
-            ft.remove(fragment);
-        }
+        ft.remove(fragment);
         ft.addToBackStack(null);
         ft.commit();
     }
 
     @Override
     public void startPopBackStack() {
-        FragmentManager fm = getSupportFragmentManager();
-        fm.popBackStack();
+        getSupportFragmentManager().popBackStack();
     }
 
     @Override

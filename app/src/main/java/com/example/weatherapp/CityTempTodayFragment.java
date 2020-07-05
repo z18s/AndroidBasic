@@ -40,12 +40,6 @@ public class CityTempTodayFragment extends Fragment {
         todayAboutListener();
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
-
     private void fillDate() {
         binding.dateTodayFull.setText(calendar.getDateString(0, "dd/MM/yyyy"));
     }
