@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="heightTempListRow">40dp</dimen>
+
+    <dimen name="sizeTempListText">20sp</dimen>
+    <dimen name="sizeCityHeaderText">30sp</dimen>
+</resources>

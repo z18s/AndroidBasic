@@ -1,37 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="today_description_temp">ТЕМП сейчас</string>
     <string name="today_about_url">https://ru.wikipedia.org/wiki/</string>
 
-    <string name="temp_min">ТЕМП мин \n °C</string>
-    <string name="temp_max">ТЕМП макс \n °C</string>
+    <string name="list_header_day">ДЕНЬ</string>
+    <string name="list_header_temp_min">ТЕМП мин \n °C</string>
+    <string name="list_header_temp_max">ТЕМП макс \n °C</string>
+    <string name="list_header_wind_ms">ВЕТЕР \n м/с</string>
+    <string name="list_header_wind_kmh">ВЕТЕР \n км/ч</string>
 
-    <string name="wind">ВЕТЕР</string>
-    <string name="wind_ms">ВЕТЕР \n м/с</string>
-    <string name="wind_kmh">ВЕТЕР \n км/ч</string>
-    <string name="wind_n">С</string>
-    <string name="wind_ne">СВ</string>
-    <string name="wind_e">В</string>
-    <string name="wind_se">ЮВ</string>
-    <string name="wind_s">Ю</string>
-    <string name="wind_sw">ЮЗ</string>
-    <string name="wind_w">З</string>
-    <string name="wind_nw">СЗ</string>
+    <string name="list_description_temp_min">ТЕМП мин</string>
+    <string name="list_description_temp_max">ТЕМП макс</string>
 
-    <string name="day">ДЕНЬ</string>
-    <string name="d0">СЕГОДНЯ</string>
-    <string name="d1">ДЕНЬ +1</string>
-    <string name="d2">ДЕНЬ +2</string>
-    <string name="d3">ДЕНЬ +3</string>
-    <string name="d4">ДЕНЬ +4</string>
-    <string name="d5">ДЕНЬ +5</string>
-    <string name="d6">ДЕНЬ +6</string>
-    <string name="d7">ДЕНЬ +7</string>
-
-    <string name="dw1">Пн</string>
-    <string name="dw2">Вт</string>
-    <string name="dw3">Ср</string>
-    <string name="dw4">Чт</string>
-    <string name="dw5">Пт</string>
-    <string name="dw6">Сб</string>
-    <string name="dw7">Вс</string>
+    <string-array name="windDirections">
+        <item>С</item>
+        <item>СВ</item>
+        <item>В</item>
+        <item>ЮВ</item>
+        <item>Ю</item>
+        <item>ЮЗ</item>
+        <item>З</item>
+        <item>СЗ</item>
+    </string-array>
 </resources>

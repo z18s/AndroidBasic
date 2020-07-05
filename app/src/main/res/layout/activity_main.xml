@@ -18,6 +18,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <include layout="@layout/city_temp_header" />
+
     <FrameLayout
         android:id="@+id/fragment_container_main"
         android:layout_width="match_parent"
