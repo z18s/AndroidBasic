@@ -1,4 +1,5 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
@@ -15,20 +16,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="100">
+        android:weightSum="1">
 
         <EditText
             android:id="@+id/textCitySelect"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="80"
+            android:layout_weight="0.72"
             android:text="@string/select_city_editable" />
 
         <Button
             android:id="@+id/buttonSwapCity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="20"
+            android:layout_weight="0.25"
             android:text="@string/select_city_button" />
 
     </LinearLayout>

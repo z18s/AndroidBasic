@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/heightTempListRow"
+    android:background="@color/colorTable"
+    android:orientation="horizontal"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/dateDayOfTheWeek"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.06"
+        android:gravity="center"
+        tools:text="Mo" />
+
+    <TextView
+        android:id="@+id/dateDayAndMonth"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.14"
+        android:gravity="center"
+        tools:text="DAY X" />
+
+    <TextView
+        android:id="@+id/textTempDay"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.15"
+        android:gravity="center"
+        android:textSize="@dimen/sizeTempListText"
+        android:textStyle="bold"
+        tools:text="+20"
+        tools:textColor="@color/colorPlus" />
+
+    <ImageView
+        android:id="@+id/iconTempDay"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.15"
+        android:contentDescription="@string/list_description_temp_max"
+        android:scaleType="centerInside"
+        tools:src="@drawable/d00" />
+
+    <TextView
+        android:id="@+id/textTempNight"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.15"
+        android:gravity="center"
+        android:textSize="@dimen/sizeTempListText"
+        android:textStyle="bold"
+        tools:text="-5"
+        tools:textColor="@color/colorMinus" />
+
+    <ImageView
+        android:id="@+id/iconTempNight"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.15"
+        android:contentDescription="@string/list_description_temp_min"
+        android:scaleType="centerInside"
+        tools:src="@drawable/n00" />
+
+    <TextView
+        android:id="@+id/windVelocity"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.10"
+        android:gravity="center"
+        tools:text="4" />
+
+    <TextView
+        android:id="@+id/windDirection"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.10"
+        android:gravity="center"
+        tools:text="SE" />
+
+</LinearLayout>

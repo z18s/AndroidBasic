@@ -1,40 +1,35 @@
 <resources>
     <string name="app_name" translatable="false">Weather App</string>
 
+    <string name="today_description_temp">TEMP now</string>
     <string name="today_about_button" translatable="false">?</string>
     <string name="today_about_url">https://en.wikipedia.org/wiki/</string>
 
     <string name="celsius" translatable="false">°C</string>
-    <string name="temp_min">TEMP min \n °C</string>
-    <string name="temp_max">TEMP max \n °C</string>
 
-    <string name="wind">WIND</string>
-    <string name="wind_ms">WIND \n m/s</string>
-    <string name="wind_kmh">WIND \n km/h</string>
-    <string name="wind_n">N</string>
-    <string name="wind_ne">NE</string>
-    <string name="wind_e">E</string>
-    <string name="wind_se">SE</string>
-    <string name="wind_s">S</string>
-    <string name="wind_sw">SW</string>
-    <string name="wind_w">W</string>
-    <string name="wind_nw">NW</string>
+    <string-array name="temp_signs" translatable="false">
+        <item></item>
+        <item>+</item>
+        <item>-</item>
+    </string-array>
 
-    <string name="day">DAY</string>
-    <string name="d0">TODAY</string>
-    <string name="d1">DAY +1</string>
-    <string name="d2">DAY +2</string>
-    <string name="d3">DAY +3</string>
-    <string name="d4">DAY +4</string>
-    <string name="d5">DAY +5</string>
-    <string name="d6">DAY +6</string>
-    <string name="d7">DAY +7</string>
+    <string name="list_header_day">DAY</string>
+    <string name="list_header_temp_min">TEMP min \n °C</string>
+    <string name="list_header_temp_max">TEMP max \n °C</string>
+    <string name="list_header_wind_ms">WIND \n m/s</string>
+    <string name="list_header_wind_kmh">WIND \n km/h</string>
 
-    <string name="dw1">Mo</string>
-    <string name="dw2">Tu</string>
-    <string name="dw3">We</string>
-    <string name="dw4">Th</string>
-    <string name="dw5">Fr</string>
-    <string name="dw6">Sa</string>
-    <string name="dw7">Su</string>
+    <string name="list_description_temp_min">TEMP min</string>
+    <string name="list_description_temp_max">TEMP max</string>
+
+    <string-array name="windDirections">
+        <item>N</item>
+        <item>NE</item>
+        <item>E</item>
+        <item>SE</item>
+        <item>S</item>
+        <item>SW</item>
+        <item>W</item>
+        <item>NW</item>
+    </string-array>
 </resources>

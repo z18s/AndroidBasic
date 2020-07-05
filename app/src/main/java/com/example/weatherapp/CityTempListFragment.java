@@ -35,6 +35,12 @@ public class CityTempListFragment extends Fragment {
         fillDate();
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
     private void fillDate() {
         binding.dateToday.setText(calendar.getDateString(0, "dd/MM"));
     }
