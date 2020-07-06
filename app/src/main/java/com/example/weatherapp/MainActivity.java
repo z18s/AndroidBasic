@@ -9,7 +9,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 
 import com.example.weatherapp.databinding.ActivityMainBinding;
 
@@ -22,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
     static CurrentCity city = new CurrentCity();
 
     private CityHeaderFragment cityHeaderFragment;
-    private CityTempTodayFragment cityTempTodayFragment;
+    private CityTempNowFragment cityTempNowFragment;
     private CityTempListFragment cityTempListFragment;
 
     @Override
@@ -43,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
         city.setPublisher(publisher);
 
         cityHeaderFragment = CityHeaderFragment.create();
-        cityTempTodayFragment = CityTempTodayFragment.create();
+        cityTempNowFragment = CityTempNowFragment.create();
         cityTempListFragment = CityTempListFragment.create();
     }
 
@@ -56,46 +55,48 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
     }
 
     @Override
-    public void startAddFragmentsTransaction(Fragment... fragments) {
+    public void startAddFragmentsTransaction(int containerId, Fragment fragment) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-        for (Fragment fragment : fragments) {
-            ft.add(R.id.fragment_container_main, fragment);
-        }
+        ft.add(containerId, fragment);
         ft.commit();
     }
 
     @Override
-    public void startReplaceFragmentsTransaction(Fragment fragment) {
+    public void startReplaceFragmentsTransaction(int containerId, Fragment fragment) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_container_main, fragment);
+        ft.replace(containerId, fragment);
         ft.addToBackStack(null);
         ft.commit();
     }
 
     @Override
-    public void startRemoveFragmentsTransaction(Fragment... fragments) {
+    public void startRemoveFragmentsTransaction(Fragment fragment) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-        for (Fragment fragment : fragments) {
-            ft.remove(fragment);
-        }
+        ft.remove(fragment);
         ft.addToBackStack(null);
         ft.commit();
     }
 
     @Override
     public void startPopBackStack() {
-        FragmentManager fm = getSupportFragmentManager();
-        fm.popBackStack();
+        getSupportFragmentManager().popBackStack();
     }
 
     @Override
     public void setDefaultFragments() {
-        startAddFragmentsTransaction(cityTempListFragment);
+        startAddFragmentsTransaction(R.id.fragment_container_temp_now, cityTempNowFragment);
+        startAddFragmentsTransaction(R.id.fragment_container_main, cityTempListFragment);
     }
 
     @Override
     public void resetDefaultFragments() {
-        startReplaceFragmentsTransaction(cityTempListFragment);
+        startReplaceFragmentsTransaction(R.id.fragment_container_temp_now, cityTempNowFragment);
+        startReplaceFragmentsTransaction(R.id.fragment_container_main, cityTempListFragment);
+    }
+
+    @Override
+    public void removeCurrentTempFragment() {
+        startRemoveFragmentsTransaction(cityTempNowFragment);
     }
 
     @Override

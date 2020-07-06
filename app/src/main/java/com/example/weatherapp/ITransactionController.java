@@ -5,10 +5,11 @@ import android.app.Fragment;
 public interface ITransactionController {
     void setDefaultFragments();
     void resetDefaultFragments();
+    void removeCurrentTempFragment();
 
-    void startAddFragmentsTransaction(Fragment... fragments);
-    void startRemoveFragmentsTransaction(Fragment... fragments);
-    void startReplaceFragmentsTransaction(Fragment fragment);
+    void startAddFragmentsTransaction(int containerId, Fragment fragment);
+    void startReplaceFragmentsTransaction(int containerId, Fragment fragment);
+    void startRemoveFragmentsTransaction(Fragment fragment);
 
     void startPopBackStack();
 }

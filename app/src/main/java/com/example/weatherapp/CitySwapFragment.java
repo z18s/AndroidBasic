@@ -2,6 +2,7 @@ package com.example.weatherapp;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,14 +10,21 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.weatherapp.databinding.FragmentCitySwapBinding;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class CitySwapFragment extends Fragment {
 
     private FragmentCitySwapBinding binding;
     private ITransactionController transactionController;
 
+    private List<String> citiesList;
     private String chosenCity = null;
 
     public static CitySwapFragment create() {
@@ -34,11 +42,8 @@ public class CitySwapFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        initEditTextField();
-        clearDefaultTextListener();
-
-        selectCityByButton();
-        selectCityByList();
+        initCitiesList(view);
+        initListeners();
     }
 
     @Override
@@ -48,15 +53,37 @@ public class CitySwapFragment extends Fragment {
         transactionController = (ITransactionController) activity;
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    private void initCitiesList(View view) {
+        citiesList = Arrays.asList(getResources().getStringArray(R.array.cities));
+        initListDecorator(view);
+        initListAdapter(view);
     }
 
-    private void initEditTextField() {
-        String cityName = MainActivity.city.getName();
-        binding.textCitySelect.setText(cityName);
+    private void initListDecorator(View view) {
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.cities_list_container);
+        recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(), DividerItemDecoration.VERTICAL) {
+            @Override
+            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                super.getItemOffsets(outRect, view, parent, state);
+                outRect.top = 10;
+                outRect.bottom = 10;
+                outRect.left = 25;
+            }
+        });
+    }
+
+    private void initListAdapter(View view) {
+        CitiesListAdapter adapter = new CitiesListAdapter();
+        binding.citiesListContainer.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        binding.citiesListContainer.setAdapter(adapter);
+
+        adapter.setList(citiesList);
+        adapter.setOnClickListener(this::selectCityByList);
+    }
+
+    private void initListeners() {
+        clearDefaultTextListener();
+        selectCityButtonListener();
     }
 
     private void clearDefaultTextListener() {
@@ -65,18 +92,17 @@ public class CitySwapFragment extends Fragment {
         });
     }
 
-    private void selectCityByButton() {
+    private void selectCityButtonListener() {
         binding.buttonSwapCity.setOnClickListener((view) -> {
             chosenCity = binding.textCitySelect.getText().toString();
             returnBack();
         });
     }
 
-    private void selectCityByList() {
-        binding.citiesList.setOnItemClickListener((adapterView, view, i, l) -> {
-            chosenCity = binding.citiesList.getItemAtPosition(i).toString();
-            returnBack();
-        });
+    private void selectCityByList(int position) {
+        chosenCity = citiesList.get(position);
+        setEditTextField(chosenCity);
+        returnBack();
     }
 
     private void returnBack() {
@@ -85,6 +111,10 @@ public class CitySwapFragment extends Fragment {
             chosenCity = null;
             transactionController.resetDefaultFragments();
         }
+    }
+
+    private void setEditTextField(String cityName) {
+        binding.textCitySelect.setText(cityName);
     }
 
     @Override

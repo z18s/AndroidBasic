@@ -47,16 +47,11 @@ public class CityHeaderFragment extends Fragment {
         transactionController = (ITransactionController) activity;
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
-
     private void swapCityListener() {
         binding.swapCity.setOnClickListener((view) -> {
             initCitySwapFragment();
-            transactionController.startReplaceFragmentsTransaction(citySwapFragment);
+            transactionController.removeCurrentTempFragment();
+            transactionController.startReplaceFragmentsTransaction(R.id.fragment_container_main, citySwapFragment);
         });
     }
 
