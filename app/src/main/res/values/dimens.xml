@@ -10,5 +10,4 @@
 
     <dimen name="sizeCitySwapListText">20sp</dimen>
     <dimen name="sizeCitySwapListPadding">5dp</dimen>
-    <dimen name="heightCitySwapListSeparator">1dp</dimen>
 </resources>
