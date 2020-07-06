@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="icon_day">
+        <item>@drawable/d00</item>
+        <item>@drawable/d10</item>
+        <item>@drawable/d11</item>
+        <item>@drawable/d12</item>
+        <item>@drawable/d20</item>
+        <item>@drawable/d21</item>
+        <item>@drawable/d22</item>
+        <item>@drawable/d23</item>
+        <item>@drawable/d30</item>
+        <item>@drawable/d31</item>
+    </array>
+
+    <array name="icon_night">
+        <item>@drawable/n00</item>
+        <item>@drawable/n10</item>
+        <item>@drawable/n11</item>
+        <item>@drawable/n12</item>
+        <item>@drawable/n20</item>
+        <item>@drawable/n21</item>
+        <item>@drawable/n22</item>
+        <item>@drawable/n23</item>
+        <item>@drawable/n30</item>
+        <item>@drawable/n31</item>
+    </array>
+
+    <array name="icon_neutral">
+        <item>@drawable/z00</item>
+        <item>@drawable/z10</item>
+        <item>@drawable/z11</item>
+        <item>@drawable/z12</item>
+        <item>@drawable/z20</item>
+        <item>@drawable/z21</item>
+        <item>@drawable/z22</item>
+        <item>@drawable/z23</item>
+        <item>@drawable/z30</item>
+        <item>@drawable/z31</item>
+    </array>
+</resources>
