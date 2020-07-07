@@ -1,27 +1,29 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorTable"
     android:gravity="center"
     android:orientation="horizontal"
-    android:weightSum="100">
+    android:weightSum="1">
 
     <TextView
         android:id="@+id/currentCity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="80"
+        android:layout_weight="0.8"
         android:gravity="center"
-        android:text="@string/city"
-        android:textSize="30sp" />
+        android:text=""
+        android:textSize="@dimen/sizeCityHeaderText"
+        tools:text="My city" />
 
     <ImageView
         android:id="@+id/swapCity"
         android:layout_width="0dp"
         android:layout_height="20dp"
-        android:layout_weight="10"
-        android:contentDescription="@string/city_swap_activity"
+        android:layout_weight="0.1"
+        android:contentDescription="@string/city_swap_description"
         android:scaleType="fitCenter"
         android:src="@drawable/icon_search" />
 
@@ -29,7 +31,7 @@
         android:id="@+id/appSettings"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_weight="10"
+        android:layout_weight="0.1"
         android:contentDescription="@string/settings_activity"
         android:scaleType="fitCenter"
         android:src="@drawable/icon_setting" />

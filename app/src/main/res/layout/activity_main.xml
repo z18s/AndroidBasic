@@ -7,14 +7,13 @@
     android:orientation="vertical">
 
     <fragment
-        android:name="com.example.weatherapp.CityHeaderFragment"
         android:id="@+id/fragment_container_header"
+        android:name="com.example.weatherapp.CityHeaderFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <fragment
-        android:name="com.example.weatherapp.CityTempTodayFragment"
-        android:id="@+id/fragment_container_current_temp"
+    <FrameLayout
+        android:id="@+id/fragment_container_temp_now"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

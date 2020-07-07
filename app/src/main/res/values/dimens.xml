@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="heightTempListRow">40dp</dimen>
+
+    <dimen name="sizeDateTodayText">15sp</dimen>
+    <dimen name="sizeTempTodayText">60sp</dimen>
+
+    <dimen name="sizeTempListText">20sp</dimen>
+    <dimen name="sizeCityHeaderText">30sp</dimen>
+
+    <dimen name="sizeCitySwapListText">20sp</dimen>
+    <dimen name="sizeCitySwapListPadding">5dp</dimen>
+</resources>
