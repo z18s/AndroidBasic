@@ -20,7 +20,7 @@ public class CityTempNowFragment extends Fragment {
     private FragmentCityTempNowBinding binding;
 
     private AppCalendar calendar = AppCalendar.getInstance();
-    private AppValuesFormatter valuesFormatter;
+    private AppValuesFormatter valuesFormatter = AppValuesFormatter.getInstance();
 
     public static CityTempNowFragment create() {
         return new CityTempNowFragment();
@@ -43,13 +43,11 @@ public class CityTempNowFragment extends Fragment {
     }
 
     private void initFragment(View view) {
-        valuesFormatter = new AppValuesFormatter(view.getContext(), calendar);
-
         initDate();
 
-        initTextView(view, R.id.textTempNow, valuesFormatter.getTempString(15, 25), true);
+        initTextView(view, R.id.textTempNow, valuesFormatter.getTempString(view.getContext(), 15, 25), true);
         initTextView(view, R.id.textTempScale, getResources().getString(R.string.celsius));
-        initImageView(view, R.id.iconTempNow, valuesFormatter.getTempDayIconId());
+        initImageView(view, R.id.iconTempNow, valuesFormatter.getTempDayIconId(view.getContext()));
     }
 
     private void initDate() {
@@ -64,7 +62,7 @@ public class CityTempNowFragment extends Fragment {
         TextView textView = view.findViewById(viewId);
         textView.setText(text);
         if (isColoured) {
-            textView.setTextColor(valuesFormatter.getTempColorId(text));
+            textView.setTextColor(valuesFormatter.getTempColorId(view.getContext(), text));
         }
     }
 

@@ -5,13 +5,21 @@ import android.content.res.TypedArray;
 
 import java.util.Random;
 
-public class AppValuesFormatter {
-    private Context context;
-    private AppCalendar calendar;
+public final class AppValuesFormatter {
 
-    public AppValuesFormatter(Context context, AppCalendar calendar) {
-        this.context = context;
-        this.calendar = calendar;
+    private static AppValuesFormatter instance;
+
+    private AppCalendar calendar = AppCalendar.getInstance();
+
+    static {
+        instance = new AppValuesFormatter();
+    }
+
+    private AppValuesFormatter() {
+    }
+
+    public static AppValuesFormatter getInstance() {
+        return instance;
     }
 
     public String getDateDayOfTheWeek(int i) {
@@ -25,7 +33,7 @@ public class AppValuesFormatter {
         return calendar.getDateString(i, "dd/MM");
     }
 
-    public String getTempString(int min, int max) {
+    public String getTempString(Context context, int min, int max) {
         int temp = getTempValue(min, max);
         String[] tempSigns = context.getResources().getStringArray(R.array.temp_signs);
         String tempSign = tempSigns[0];
@@ -35,7 +43,7 @@ public class AppValuesFormatter {
         return tempSign + temp;
     }
 
-    public int getTempColorId(String tempString) {
+    public int getTempColorId(Context context, String tempString) {
         String currentSign = tempString.substring(0, 1);
         String[] tempSigns = context.getResources().getStringArray(R.array.temp_signs);
         if (currentSign.equals(tempSigns[1])) {
@@ -47,7 +55,7 @@ public class AppValuesFormatter {
         }
     }
 
-    public int[] getIdsFromArrayResources(int arrayId) {
+    public int[] getIdsFromArrayResources(Context context, int arrayId) {
         TypedArray resArray = context.getResources().obtainTypedArray(arrayId);
 
         int len = resArray.length();
@@ -66,13 +74,13 @@ public class AppValuesFormatter {
         return new Random().nextInt(max - min) + min;
     }
 
-    public int getTempDayIconId() {
-        int[] resIds = getIdsFromArrayResources(R.array.icon_day);
+    public int getTempDayIconId(Context context) {
+        int[] resIds = getIdsFromArrayResources(context, R.array.icon_day);
         return resIds[new Random().nextInt(resIds.length)];
     }
 
-    public int getTempNightIconId() {
-        int[] resIds = getIdsFromArrayResources(R.array.icon_night);
+    public int getTempNightIconId(Context context) {
+        int[] resIds = getIdsFromArrayResources(context, R.array.icon_night);
         return resIds[new Random().nextInt(resIds.length)];
     }
 
@@ -80,7 +88,7 @@ public class AppValuesFormatter {
         return new Random().nextInt(max - min) + min;
     }
 
-    public String getWindDirectionValue() {
+    public String getWindDirectionValue(Context context) {
         String[] windDirections = context.getResources().getStringArray(R.array.windDirections);
         return windDirections[new Random().nextInt(8)];
     }

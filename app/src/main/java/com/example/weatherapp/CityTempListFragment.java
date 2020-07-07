@@ -20,8 +20,7 @@ public class CityTempListFragment extends Fragment {
 
     private FragmentCityTempListBinding binding;
 
-    private AppCalendar calendar = AppCalendar.getInstance();
-    private AppValuesFormatter valuesFormatter;
+    private AppValuesFormatter valuesFormatter = AppValuesFormatter.getInstance();
 
     private final int LIST_SIZE = 7;
 
@@ -46,8 +45,6 @@ public class CityTempListFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void initList(View view) {
-        valuesFormatter = new AppValuesFormatter(view.getContext(), calendar);
-
         LinearLayout layoutView = (LinearLayout) view;
         LayoutInflater layoutInflater = getLayoutInflater();
 
@@ -56,12 +53,12 @@ public class CityTempListFragment extends Fragment {
 
             initTextView(item, R.id.dateDayOfTheWeek, valuesFormatter.getDateDayOfTheWeek(i));
             initTextView(item, R.id.dateDayAndMonth, valuesFormatter.getDateDayAndMonth(i));
-            initTextView(item, R.id.textTempDay, valuesFormatter.getTempString(10, 20), true);
-            initImageView(item, R.id.iconTempDay, valuesFormatter.getTempDayIconId());
-            initTextView(item, R.id.textTempNight, valuesFormatter.getTempString(-5, 5), true);
-            initImageView(item, R.id.iconTempNight, valuesFormatter.getTempNightIconId());
+            initTextView(item, R.id.textTempDay, valuesFormatter.getTempString(view.getContext(), 10, 20), true);
+            initImageView(item, R.id.iconTempDay, valuesFormatter.getTempDayIconId(view.getContext()));
+            initTextView(item, R.id.textTempNight, valuesFormatter.getTempString(view.getContext(), -5, 5), true);
+            initImageView(item, R.id.iconTempNight, valuesFormatter.getTempNightIconId(view.getContext()));
             initTextView(item, R.id.windVelocity, String.valueOf(valuesFormatter.getWindVelocityValue(1, 4)));
-            initTextView(item, R.id.windDirection, valuesFormatter.getWindDirectionValue());
+            initTextView(item, R.id.windDirection, valuesFormatter.getWindDirectionValue(view.getContext()));
 
             layoutView.addView(item);
         }
@@ -75,7 +72,7 @@ public class CityTempListFragment extends Fragment {
         TextView textView = view.findViewById(viewId);
         textView.setText(text);
         if (isColoured) {
-            textView.setTextColor(valuesFormatter.getTempColorId(text));
+            textView.setTextColor(valuesFormatter.getTempColorId(view.getContext(), text));
         }
     }
 
