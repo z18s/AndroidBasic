@@ -101,7 +101,6 @@ public class CitySwapFragment extends Fragment {
 
     private void selectCityByList(int position) {
         chosenCity = citiesList.get(position);
-        setEditTextField(chosenCity);
         returnBack();
     }
 
@@ -111,10 +110,6 @@ public class CitySwapFragment extends Fragment {
             chosenCity = null;
             transactionController.resetDefaultFragments();
         }
-    }
-
-    private void setEditTextField(String cityName) {
-        binding.textCitySelect.setText(cityName);
     }
 
     @Override
