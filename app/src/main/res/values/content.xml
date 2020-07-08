@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="celsius" translatable="false">°C</string>
+    <string-array name="temp_signs" translatable="false">
+        <item></item>
+        <item>+</item>
+        <item>-</item>
+    </string-array>
+
+    <string name="list_header_day">DAY</string>
+    <string name="list_header_temp_min">TEMP min \n °C</string>
+    <string name="list_header_temp_max">TEMP max \n °C</string>
+    <string name="list_header_wind_ms">WIND \n m/s</string>
+    <string name="list_header_wind_kmh">WIND \n km/h</string>
+
+    <string name="today_description_temp">TEMP now</string>
+    <string name="list_description_temp_min">TEMP min</string>
+    <string name="list_description_temp_max">TEMP max</string>
+
+    <string-array name="windDirections">
+        <item>N</item>
+        <item>NE</item>
+        <item>E</item>
+        <item>SE</item>
+        <item>S</item>
+        <item>SW</item>
+        <item>W</item>
+        <item>NW</item>
+    </string-array>
+</resources>

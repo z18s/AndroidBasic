@@ -1,35 +1,23 @@
 <resources>
+    <!-- app -->
     <string name="app_name" translatable="false">Weather App</string>
 
-    <string name="today_description_temp">TEMP now</string>
+    <!-- about_fragment -->
+    <string name="about_text">Created by me.</string>
+    <string name="about_button">Ok</string>
+
+    <!-- bottom_bar -->
+    <string name="title_home">Home</string>
+    <string name="title_swap">Swap city</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_about">About</string>
+
+    <!-- temp_today_fragment -->
     <string name="today_about_button" translatable="false">?</string>
     <string name="today_about_url">https://en.wikipedia.org/wiki/</string>
 
-    <string name="celsius" translatable="false">°C</string>
-
-    <string-array name="temp_signs" translatable="false">
-        <item></item>
-        <item>+</item>
-        <item>-</item>
-    </string-array>
-
-    <string name="list_header_day">DAY</string>
-    <string name="list_header_temp_min">TEMP min \n °C</string>
-    <string name="list_header_temp_max">TEMP max \n °C</string>
-    <string name="list_header_wind_ms">WIND \n m/s</string>
-    <string name="list_header_wind_kmh">WIND \n km/h</string>
-
-    <string name="list_description_temp_min">TEMP min</string>
-    <string name="list_description_temp_max">TEMP max</string>
-
-    <string-array name="windDirections">
-        <item>N</item>
-        <item>NE</item>
-        <item>E</item>
-        <item>SE</item>
-        <item>S</item>
-        <item>SW</item>
-        <item>W</item>
-        <item>NW</item>
-    </string-array>
+    <!-- city_swap_fragment -->
+    <string name="city_swap_description">Search</string>
+    <string name="city_swap_text">Select your city</string>
+    <string name="select_city_button">Select</string>
 </resources>

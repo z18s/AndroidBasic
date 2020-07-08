@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="city_swap_description">Поиск</string>
-    <string name="city_swap_text">Выберите город</string>
-
-    <string name="select_city_button">Выбрать</string>
-
     <string-array name="cities">
         <item>Москва</item>
         <item>Рим</item>

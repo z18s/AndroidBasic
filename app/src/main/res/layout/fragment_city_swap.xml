@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
             android:text="@string/select_city_button"
-            android:textColor="@color/colorEditText"
+            android:textColor="@color/Black"
             app:backgroundTint="@color/colorAccent" />
 
     </LinearLayout>

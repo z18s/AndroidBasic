@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="heightTempListRow">40dp</dimen>
+    <!-- main -->
+    <dimen name="sizeLayoutMargin">8dp</dimen>
 
+    <!-- about -->
+    <dimen name="sizeAboutText">25sp</dimen>
+    <dimen name="sizeAboutButtonText">15sp</dimen>
+
+    <!-- header -->
+    <dimen name="sizeCityHeaderText">30sp</dimen>
+
+    <!-- temp_today -->
     <dimen name="sizeDateTodayText">15sp</dimen>
     <dimen name="sizeTempTodayText">60sp</dimen>
 
+    <!-- temp_list -->
     <dimen name="sizeTempListText">20sp</dimen>
-    <dimen name="sizeCityHeaderText">30sp</dimen>
+    <dimen name="heightTempListRow">43dp</dimen>
+    <dimen name="sizeTempListPadding">5dp</dimen>
 
+    <!-- swap_list -->
     <dimen name="sizeCitySwapListText">20sp</dimen>
     <dimen name="sizeCitySwapListPadding">5dp</dimen>
 </resources>

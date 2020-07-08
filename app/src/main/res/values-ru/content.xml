@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="list_header_day">ДЕНЬ</string>
+    <string name="list_header_temp_min">ТЕМП мин \n °C</string>
+    <string name="list_header_temp_max">ТЕМП макс \n °C</string>
+    <string name="list_header_wind_ms">ВЕТЕР \n м/с</string>
+    <string name="list_header_wind_kmh">ВЕТЕР \n км/ч</string>
+
+    <string name="today_description_temp">ТЕМП сейчас</string>
+    <string name="list_description_temp_min">ТЕМП мин</string>
+    <string name="list_description_temp_max">ТЕМП макс</string>
+
+    <string-array name="windDirections">
+        <item>С</item>
+        <item>СВ</item>
+        <item>В</item>
+        <item>ЮВ</item>
+        <item>Ю</item>
+        <item>ЮЗ</item>
+        <item>З</item>
+        <item>СЗ</item>
+    </string-array>
+</resources>

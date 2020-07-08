@@ -8,9 +8,10 @@
     <color name="colorAlphaDarker">#56000000</color>
 
     <color name="colorEditTextBackground">#03000000</color>
-    <color name="colorEditText">#000000</color>
 
     <color name="colorPlus">#E34234</color>
     <color name="colorZero">#00A86B</color>
     <color name="colorMinus">#4B61D1</color>
+
+    <color name="Black">#000000</color>
 </resources>
