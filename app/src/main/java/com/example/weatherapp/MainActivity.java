@@ -2,6 +2,7 @@ package com.example.weatherapp;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -53,9 +54,6 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
                 case R.id.menu_home:
                     clickOnMenuHome();
                     return true;
-                case R.id.menu_swap_city:
-                    clickOnMenuSwapCity();
-                    return true;
                 case R.id.menu_settings:
                     clickOnMenuSettings();
                     return true;
@@ -70,10 +68,9 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
     private void clickOnMenuHome() {
     }
 
-    private void clickOnMenuSwapCity() {
-    }
-
     private void clickOnMenuSettings() {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivityForResult(intent, Constants.REQ_CODE_SETTINGS);
     }
 
     private void clickOnMenuAbout() {

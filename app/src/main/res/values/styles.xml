@@ -1,21 +1,14 @@
 <resources>
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
-        <item name="windowNoTitle">true</item>
-        
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
 
-        <item name="android:windowBackground">@drawable/background_gradient_light</item>
+    <style name="CustomBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="itemTextColor">@color/colorOnPrimary</item>
+        <item name="itemIconTint">@color/colorOnPrimary</item>
     </style>
 
-    <style name="AppDarkTheme" parent="ThemeOverlay.MaterialComponents.Dark">
-        <item name="windowNoTitle">true</item>
-
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-
-        <item name="android:windowBackground">@drawable/background_gradient_dark</item>
+    <style name="CustomTextInput" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="hintTextColor">@color/colorAccent</item>
+        <item name="boxStrokeColor">@color/colorAccent</item>
     </style>
+
 </resources>

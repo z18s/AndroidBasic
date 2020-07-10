@@ -80,7 +80,7 @@ public class CitySwapFragment extends Fragment {
         binding.citiesListContainer.setAdapter(adapter);
 
         adapter.setList(citiesList);
-        adapter.setOnClickListener(this::selectCityByList);
+        adapter.setOnClickListener(position -> selectCityByList(view, position));
     }
 
     private void initListeners() {
@@ -97,16 +97,21 @@ public class CitySwapFragment extends Fragment {
     private void selectCityButtonListener() {
         binding.buttonSwapCity.setOnClickListener((view) -> {
             chosenCity = binding.textCitySelect.getText().toString();
-            Snackbar.make(view, "Выбран новый город!",
-                    Snackbar.LENGTH_LONG)
-                    .setAction("Action", (view1) -> Toast.makeText(view1.getContext(), "Кнопка в Snackbar нажата", Toast.LENGTH_LONG).show()).show();
-            returnBack();
+            confirmChoice(view);
         });
     }
 
-    private void selectCityByList(int position) {
+    private void selectCityByList(View view, int position) {
         chosenCity = citiesList.get(position);
-        returnBack();
+        confirmChoice(view);
+    }
+
+    private void confirmChoice(View view) {
+        Snackbar.make(view, "Are you sure to swap a city?", Snackbar.LENGTH_LONG)
+                .setAction("Ok", (view1) -> {
+                    returnBack();
+                    Toast.makeText(view1.getContext(), "City changed.", Toast.LENGTH_LONG).show();
+                }).show();
     }
 
     private void returnBack() {

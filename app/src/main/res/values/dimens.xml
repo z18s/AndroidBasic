@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- main -->
-    <dimen name="sizeLayoutMargin">8dp</dimen>
 
     <!-- about -->
     <dimen name="sizeAboutText">25sp</dimen>
@@ -13,6 +12,9 @@
     <!-- temp_today -->
     <dimen name="sizeDateTodayText">15sp</dimen>
     <dimen name="sizeTempTodayText">60sp</dimen>
+    <dimen name="sizeTempTodayDegreeText">30sp</dimen>
+    <dimen name="sizeTempTodayIconWidth">150dp</dimen>
+    <dimen name="sizeTempTodayIconHeight">150dp</dimen>
 
     <!-- temp_list -->
     <dimen name="sizeTempListText">20sp</dimen>
@@ -22,4 +24,5 @@
     <!-- swap_list -->
     <dimen name="sizeCitySwapListText">20sp</dimen>
     <dimen name="sizeCitySwapListPadding">5dp</dimen>
+
 </resources>

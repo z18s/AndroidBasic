@@ -10,17 +10,12 @@
         android:id="@+id/fragment_container_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/sizeLayoutMargin"
-        android:layout_marginEnd="@dimen/sizeLayoutMargin"
-        android:background="@drawable/temp_table_list"
         app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
         android:id="@+id/fragment_container_temp_now"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/sizeLayoutMargin"
-        android:layout_marginEnd="@dimen/sizeLayoutMargin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fragment_container_header" />
@@ -29,8 +24,6 @@
         android:id="@+id/fragment_container_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/sizeLayoutMargin"
-        android:layout_marginEnd="@dimen/sizeLayoutMargin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fragment_container_temp_now" />
@@ -39,7 +32,6 @@
         android:id="@+id/navigation_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_color_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_menu" />
 

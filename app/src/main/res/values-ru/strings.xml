@@ -6,7 +6,6 @@
 
     <!-- bottom_bar -->
     <string name="title_home">Домой</string>
-    <string name="title_swap">Сменить город</string>
     <string name="title_settings">Настройки</string>
     <string name="title_about">Сведения</string>
 

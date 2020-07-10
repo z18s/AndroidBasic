@@ -1,0 +1,46 @@
+<resources>
+    <!-- light_theme -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+        <!-- parameters -->
+        <item name="windowNoTitle">true</item>
+
+        <!-- colors -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorError">@color/colorError</item>
+
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorOnSecondary">@color/colorOnPrimary</item>
+        <item name="colorOnError">@color/colorOnError</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+
+        <item name="android:textColor">@color/colorOnBackground</item>
+
+        <item name="android:windowBackground">@color/colorBackgroundPrimary</item>
+
+        <!-- styles -->
+        <item name="bottomNavigationStyle">@style/CustomBottomNavigation</item>
+        <item name="textInputStyle">@style/CustomTextInput</item>
+
+    </style>
+
+    <!-- light_theme_colors -->
+    <color name="colorPrimary">#607d8b</color>
+    <color name="colorPrimaryDark">#34515e</color>
+    <color name="colorPrimaryVariant">#8eacbb</color>
+
+    <color name="colorAccent">#ff9800</color>
+    <color name="colorError">#b00020</color>
+
+    <color name="colorOnPrimary">#000000</color>
+    <color name="colorOnError">#ffffff</color>
+    <color name="colorOnBackground">#000000</color>
+    <color name="colorOnSurface">#000000</color>
+
+    <color name="colorBackgroundPrimary">#e1e2e1</color>
+    <color name="colorBackgroundSecondary">#f5f5f6</color>
+</resources>
