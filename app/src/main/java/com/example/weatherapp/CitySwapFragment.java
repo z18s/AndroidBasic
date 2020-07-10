@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.weatherapp.databinding.FragmentCitySwapBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Arrays;
 import java.util.List;
@@ -78,7 +80,7 @@ public class CitySwapFragment extends Fragment {
         binding.citiesListContainer.setAdapter(adapter);
 
         adapter.setList(citiesList);
-        adapter.setOnClickListener(this::selectCityByList);
+        adapter.setOnClickListener((position) -> selectCityByList(view, position));
     }
 
     private void initListeners() {
@@ -95,14 +97,21 @@ public class CitySwapFragment extends Fragment {
     private void selectCityButtonListener() {
         binding.buttonSwapCity.setOnClickListener((view) -> {
             chosenCity = binding.textCitySelect.getText().toString();
-            returnBack();
+            confirmChoice(view);
         });
     }
 
-    private void selectCityByList(int position) {
+    private void selectCityByList(View view, int position) {
         chosenCity = citiesList.get(position);
-        setEditTextField(chosenCity);
-        returnBack();
+        confirmChoice(view);
+    }
+
+    private void confirmChoice(View view) {
+        Snackbar.make(view, "Are you sure to swap a city?", Snackbar.LENGTH_LONG)
+                .setAction("Ok", (view1) -> {
+                    returnBack();
+                    Toast.makeText(view1.getContext(), "City changed.", Toast.LENGTH_LONG).show();
+                }).show();
     }
 
     private void returnBack() {
@@ -111,10 +120,6 @@ public class CitySwapFragment extends Fragment {
             chosenCity = null;
             transactionController.resetDefaultFragments();
         }
-    }
-
-    private void setEditTextField(String cityName) {
-        binding.textCitySelect.setText(cityName);
     }
 
     @Override

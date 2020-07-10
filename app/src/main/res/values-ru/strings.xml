@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="today_description_temp">ТЕМП сейчас</string>
+    <!-- about_fragment -->
+    <string name="about_text">Создано мной.</string>
+    <string name="about_button">Ок</string>
+
+    <!-- bottom_bar -->
+    <string name="title_home">Домой</string>
+    <string name="title_settings">Настройки</string>
+    <string name="title_about">Сведения</string>
+
+    <!-- temp_today_fragment -->
     <string name="today_about_url">https://ru.wikipedia.org/wiki/</string>
 
-    <string name="list_header_day">ДЕНЬ</string>
-    <string name="list_header_temp_min">ТЕМП мин \n °C</string>
-    <string name="list_header_temp_max">ТЕМП макс \n °C</string>
-    <string name="list_header_wind_ms">ВЕТЕР \n м/с</string>
-    <string name="list_header_wind_kmh">ВЕТЕР \n км/ч</string>
-
-    <string name="list_description_temp_min">ТЕМП мин</string>
-    <string name="list_description_temp_max">ТЕМП макс</string>
-
-    <string-array name="windDirections">
-        <item>С</item>
-        <item>СВ</item>
-        <item>В</item>
-        <item>ЮВ</item>
-        <item>Ю</item>
-        <item>ЮЗ</item>
-        <item>З</item>
-        <item>СЗ</item>
-    </string-array>
+    <!-- city_swap_fragment -->
+    <string name="city_swap_description">Поиск</string>
+    <string name="city_swap_text">Выберите город</string>
+    <string name="select_city_button">Выбрать</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.weatherapp;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.weatherapp.databinding.ActivityMainBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements ITransactionController, Observer {
 
@@ -24,19 +26,60 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
     private CityTempNowFragment cityTempNowFragment;
     private CityTempListFragment cityTempListFragment;
 
+    private BottomNavigationView.OnNavigationItemSelectedListener OnNavigationItemSelectedListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
 
+        initMenu();
         initFragments();
 
+        setMainHeader();
         setDefaultFragments();
     }
 
+    private void initMenu() {
+        initMenuListener();
+
+        BottomNavigationView bottomMenu = findViewById(R.id.navigation_view);
+        bottomMenu.setOnNavigationItemSelectedListener(OnNavigationItemSelectedListener);
+    }
+
+    private void initMenuListener() {
+        OnNavigationItemSelectedListener = (item) -> {
+            switch (item.getItemId()) {
+                case R.id.menu_home:
+                    clickOnMenuHome();
+                    return true;
+                case R.id.menu_settings:
+                    clickOnMenuSettings();
+                    return true;
+                case R.id.menu_about:
+                    clickOnMenuAbout();
+                    return true;
+            }
+            return false;
+        };
+    }
+
+    private void clickOnMenuHome() {
+    }
+
+    private void clickOnMenuSettings() {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivityForResult(intent, Constants.REQ_CODE_SETTINGS);
+    }
+
+    private void clickOnMenuAbout() {
+        AboutFragment aboutFragment = new AboutFragment();
+        aboutFragment.show(getSupportFragmentManager(), "About");
+    }
+
     private void initFragments() {
-        city.setName(getCurrentCityText(), false);
+        //city.setName(getCurrentCityText(), false);
 
         publisher.subscribe(this);
         city.setPublisher(publisher);
@@ -46,9 +89,9 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
         cityTempListFragment = CityTempListFragment.create();
     }
 
-    private String getCurrentCityText() {
-        return ((TextView) findViewById(R.id.currentCity)).getText().toString();
-    }
+//    private String getCurrentCityText() {
+//        return ((TextView) findViewById(R.id.currentCity)).getText().toString();
+//    }
 
     private void setCurrentCityText(String name) {
         ((TextView) findViewById(R.id.currentCity)).setText(name);
@@ -80,6 +123,10 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
     @Override
     public void startPopBackStack() {
         getSupportFragmentManager().popBackStack();
+    }
+
+    private void setMainHeader() {
+        startAddFragmentsTransaction(R.id.fragment_container_header, cityHeaderFragment);
     }
 
     @Override

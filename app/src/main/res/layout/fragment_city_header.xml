@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorTable"
+    android:background="@color/colorPrimary"
     android:gravity="center"
     android:orientation="horizontal"
     android:weightSum="1">
@@ -15,25 +15,26 @@
         android:layout_weight="0.8"
         android:gravity="center"
         android:text=""
+        android:textColor="@color/colorOnPrimary"
         android:textSize="@dimen/sizeCityHeaderText"
         tools:text="My city" />
 
     <ImageView
         android:id="@+id/swapCity"
         android:layout_width="0dp"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:layout_weight="0.1"
         android:contentDescription="@string/city_swap_description"
         android:scaleType="fitCenter"
-        android:src="@drawable/icon_search" />
+        android:src="@drawable/ic_search" />
 
     <ImageView
         android:id="@+id/appSettings"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_weight="0.1"
-        android:contentDescription="@string/settings_activity"
+        android:contentDescription="@string/title_settings"
         android:scaleType="fitCenter"
-        android:src="@drawable/icon_setting" />
+        android:src="@drawable/ic_settings" />
 
 </LinearLayout>

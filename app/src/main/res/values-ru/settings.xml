@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="settings_activity">Настройки</string>
-
     <string name="switch_pressure">Показывать атмосферное давление</string>
 
     <string name="radio_temp">Шкала температуры:</string>
