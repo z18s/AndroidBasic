@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- about_fragment -->
-    <string name="about_text">Создано мной.</string>
-    <string name="about_button">Ок</string>
-
     <!-- bottom_bar -->
     <string name="title_home">Домой</string>
     <string name="title_settings">Настройки</string>
     <string name="title_about">Сведения</string>
 
-    <!-- temp_today_fragment -->
-    <string name="today_about_url">https://ru.wikipedia.org/wiki/</string>
+    <!-- about_fragment -->
+    <string name="about_text">Создано мной.</string>
+    <string name="about_button">@android:string/ok</string>
+
+    <!-- home_temp_fragment -->
+    <string name="date_about_url">https://ru.wikipedia.org/wiki/</string>
 
     <!-- city_swap_fragment -->
     <string name="city_swap_description">Поиск</string>
     <string name="city_swap_text">Выберите город</string>
     <string name="select_city_button">Выбрать</string>
+    <string name="city_swap_confirm_text">Уверены, что хотите сменить город?</string>
+    <string name="city_swap_confirm_button">@android:string/ok</string>
 </resources>

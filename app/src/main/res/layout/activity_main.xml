@@ -7,26 +7,26 @@
     android:orientation="vertical">
 
     <FrameLayout
-        android:id="@+id/fragment_container_header"
+        android:id="@+id/container_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
-        android:id="@+id/fragment_container_temp_now"
+        android:id="@+id/container_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_container_header" />
+        app:layout_constraintTop_toBottomOf="@id/container_header" />
 
     <FrameLayout
-        android:id="@+id/fragment_container_main"
+        android:id="@+id/container_footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_container_temp_now" />
+        app:layout_constraintTop_toBottomOf="@id/container_main" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation_view"

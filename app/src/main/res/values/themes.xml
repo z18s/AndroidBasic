@@ -1,6 +1,7 @@
 <resources>
     <!-- light_theme -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+
         <!-- parameters -->
         <item name="windowNoTitle">true</item>
 
@@ -27,20 +28,4 @@
         <item name="textInputStyle">@style/CustomTextInput</item>
 
     </style>
-
-    <!-- light_theme_colors -->
-    <color name="colorPrimary">#607d8b</color>
-    <color name="colorPrimaryDark">#34515e</color>
-
-    <color name="colorAccent">#ff9800</color>
-    <color name="colorError">#b00020</color>
-
-    <color name="colorOnPrimary">#000000</color>
-    <color name="colorOnError">#ffffff</color>
-    <color name="colorOnBackground">#000000</color>
-    <color name="colorOnSurface">#000000</color>
-
-    <color name="colorBackgroundPrimary">#e1e2e1</color>
-    <color name="colorBackgroundSecondary">#f5f5f6</color>
-    <color name="colorBackgroundTertiary">#8eacbb</color>
 </resources>

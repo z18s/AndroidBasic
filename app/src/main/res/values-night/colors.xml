@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- content_colors -->
+    <color name="colorPlus">#F22613</color>
+    <color name="colorZero">#26C281</color>
+    <color name="colorMinus">#19B5FE</color>
+
+    <color name="colorTextShadow">#000000</color>
+
+    <!-- dark_theme_colors -->
+    <color name="colorPrimary">#455a64</color>
+    <color name="colorPrimaryDark">#1c313a</color>
+
+    <color name="colorAccent">#0067ff</color>
+    <color name="colorError">#cf6679</color>
+
+    <color name="colorOnPrimary">#ffffff</color>
+    <color name="colorOnError">#000000</color>
+    <color name="colorOnBackground">#ffffff</color>
+    <color name="colorOnSurface">#ffffff</color>
+
+    <color name="colorBackgroundPrimary">#1c313a</color>
+    <color name="colorBackgroundSecondary">#718792</color>
+    <color name="colorBackgroundTertiary">#455a64</color>
+</resources>

@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public class CurrentCity implements Serializable {
 
-    private String name;
+    private String name = "";
     private Publisher publisher;
 
     public CurrentCity() {

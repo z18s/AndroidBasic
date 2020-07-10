@@ -1,0 +1,80 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iconSwapCity"
+        android:layout_width="@dimen/sizeCitySwapIcon"
+        android:layout_height="@dimen/sizeCitySwapIcon"
+        android:contentDescription="@string/city_swap_description"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/layoutCurrentDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/dateTodayFull"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:textSize="@dimen/sizeDateText"
+            tools:text="@string/list_header_day" />
+
+        <Button
+            android:id="@+id/buttonDateAbout"
+            android:layout_width="@dimen/sizeDateAboutButtonWidth"
+            android:layout_height="@dimen/sizeDateAboutButtonHeight"
+            android:gravity="center"
+            android:padding="@dimen/sizeDateAboutButtonPadding"
+            android:text="@string/date_about_button" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/layoutCurrentDate">
+
+        <TextView
+            android:id="@+id/textTempNow"
+            style="@style/ColoredTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sizeTempText"
+            android:textStyle="bold"
+            tools:text="+25"
+            tools:textColor="@color/colorPlus" />
+
+        <TextView
+            android:id="@+id/textTempScale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sizeTempDegreeText"
+            android:textStyle="bold"
+            tools:text="@string/celsius" />
+
+        <ImageView
+            android:id="@+id/iconTempNow"
+            android:layout_width="@dimen/sizeTempIconWidth"
+            android:layout_height="@dimen/sizeTempIconHeight"
+            android:contentDescription="@string/today_description_temp"
+            android:padding="20dp"
+            android:scaleType="fitCenter"
+            tools:src="@drawable/d00" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

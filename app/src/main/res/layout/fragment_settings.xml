@@ -2,12 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SettingsActivity">
+    android:layout_height="wrap_content">
 
     <LinearLayout
+        android:id="@+id/settingsList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -15,20 +14,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/title_settings"
-            android:textSize="30sp" />
-
         <Switch
             android:id="@+id/themeSettings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="Dark Theme"
-            android:textSize="20sp"
+            android:text="@string/switch_theme"
+            android:textSize="@dimen/sizeSettingsSwitchText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -39,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:text="@string/switch_pressure"
-            android:textSize="20sp"
+            android:textSize="@dimen/sizeSettingsSwitchText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -56,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:singleLine="false"
                 android:text="@string/radio_temp"
-                android:textSize="20sp" />
+                android:textSize="@dimen/sizeSettingsRadioGroupText" />
 
             <RadioButton
                 android:id="@+id/temp1"
@@ -65,7 +57,7 @@
                 android:checked="true"
                 android:layoutDirection="rtl"
                 android:text="@string/radio_temp_c"
-                android:textSize="15sp" />
+                android:textSize="@dimen/sizeSettingsRadioButtonText" />
 
             <RadioButton
                 android:id="@+id/temp2"
@@ -73,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layoutDirection="rtl"
                 android:text="@string/radio_temp_f"
-                android:textSize="15sp" />
+                android:textSize="@dimen/sizeSettingsRadioButtonText" />
 
         </RadioGroup>
 
@@ -88,7 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/radio_wind"
-                android:textSize="20sp" />
+                android:textSize="@dimen/sizeSettingsRadioGroupText" />
 
             <RadioButton
                 android:id="@+id/wind1"
@@ -97,7 +89,7 @@
                 android:checked="true"
                 android:layoutDirection="rtl"
                 android:text="@string/radio_wind_m"
-                android:textSize="15sp" />
+                android:textSize="@dimen/sizeSettingsRadioButtonText" />
 
             <RadioButton
                 android:id="@+id/wind2"
@@ -105,8 +97,18 @@
                 android:layout_height="wrap_content"
                 android:layoutDirection="rtl"
                 android:text="@string/radio_wind_km"
-                android:textSize="15sp" />
+                android:textSize="@dimen/sizeSettingsRadioButtonText" />
 
         </RadioGroup>
     </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/settingsConfirmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/settingsList" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

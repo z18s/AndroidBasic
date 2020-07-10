@@ -1,5 +1,6 @@
 package com.example.weatherapp;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,23 +14,24 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.weatherapp.databinding.FragmentCityTempNowBinding;
+import com.example.weatherapp.databinding.FragmentHomeTempBinding;
 
-public class CityTempNowFragment extends Fragment {
+public class HomeTempFragment extends Fragment {
 
-    private FragmentCityTempNowBinding binding;
+    private FragmentHomeTempBinding binding;
+    private ITransactionController transactionController;
 
     private AppCalendar calendar = AppCalendar.getInstance();
     private AppValuesFormatter valuesFormatter = AppValuesFormatter.getInstance();
 
-    public static CityTempNowFragment create() {
-        return new CityTempNowFragment();
+    public static HomeTempFragment create() {
+        return new HomeTempFragment();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentCityTempNowBinding.inflate(inflater, container, false);
+        binding = FragmentHomeTempBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -39,7 +41,14 @@ public class CityTempNowFragment extends Fragment {
 
         initFragment(view);
 
-        todayAboutListener();
+        initListeners();
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        transactionController = (ITransactionController) activity;
     }
 
     private void initFragment(View view) {
@@ -71,14 +80,25 @@ public class CityTempNowFragment extends Fragment {
         imageView.setImageResource(imageId);
     }
 
+    private void initListeners() {
+        todayAboutListener();
+        swapCityListener();
+    }
+
     private void todayAboutListener() {
-        binding.buttonTodayAbout.setOnClickListener((view) -> {
-            String url = (String) getResources().getText(R.string.today_about_url);
+        binding.buttonDateAbout.setOnClickListener((view) -> {
+            String url = (String) getResources().getText(R.string.date_about_url);
             String date = calendar.getDateString(0, "d MMMM");
             Uri uri = Uri.parse(url + date);
 
             Intent browser = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(browser);
+        });
+    }
+
+    private void swapCityListener() {
+        binding.iconSwapCity.setOnClickListener((view) -> {
+            transactionController.setCitySwapFragment();
         });
     }
 }

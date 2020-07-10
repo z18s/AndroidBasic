@@ -56,7 +56,9 @@ public class CitiesListAdapter extends RecyclerView.Adapter<CitiesListAdapter.Ci
         public void bind(String item, OnClickListener listener) {
             textView.setText(item);
 
-            textView.setOnClickListener((v) -> listener.onClick(getAdapterPosition()));
+            textView.setOnClickListener((view) -> {
+                listener.onClick(getAdapterPosition());
+            });
         }
     }
 

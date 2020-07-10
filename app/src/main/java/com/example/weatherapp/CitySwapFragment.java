@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -62,7 +61,7 @@ public class CitySwapFragment extends Fragment {
     }
 
     private void initListDecorator(View view) {
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.cities_list_container);
+        RecyclerView recyclerView = view.findViewById(R.id.cities_list_container);
         recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(), DividerItemDecoration.VERTICAL) {
             @Override
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
@@ -80,7 +79,9 @@ public class CitySwapFragment extends Fragment {
         binding.citiesListContainer.setAdapter(adapter);
 
         adapter.setList(citiesList);
-        adapter.setOnClickListener((position) -> selectCityByList(view, position));
+        adapter.setOnClickListener((position) -> {
+            selectCityByList(view, position);
+        });
     }
 
     private void initListeners() {
@@ -107,18 +108,19 @@ public class CitySwapFragment extends Fragment {
     }
 
     private void confirmChoice(View view) {
-        Snackbar.make(view, "Are you sure to swap a city?", Snackbar.LENGTH_LONG)
-                .setAction("Ok", (view1) -> {
+        String textConfirmMessage = getResources().getString(R.string.city_swap_confirm_text);
+        String textConfirmButton = getResources().getString(R.string.city_swap_confirm_button);
+        Snackbar.make(view, textConfirmMessage, Snackbar.LENGTH_LONG)
+                .setAction(textConfirmButton, (v) -> {
                     returnBack();
-                    Toast.makeText(view1.getContext(), "City changed.", Toast.LENGTH_LONG).show();
                 }).show();
     }
 
     private void returnBack() {
         if (chosenCity != null && !chosenCity.equals("")) {
+            transactionController.resetHomeFragments();
             MainActivity.city.setName(chosenCity);
             chosenCity = null;
-            transactionController.resetDefaultFragments();
         }
     }
 

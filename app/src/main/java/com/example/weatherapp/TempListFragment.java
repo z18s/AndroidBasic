@@ -14,24 +14,24 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
-import com.example.weatherapp.databinding.FragmentCityTempListBinding;
+import com.example.weatherapp.databinding.FragmentTempListBinding;
 
-public class CityTempListFragment extends Fragment {
+public class TempListFragment extends Fragment {
 
-    private FragmentCityTempListBinding binding;
+    private FragmentTempListBinding binding;
 
     private AppValuesFormatter valuesFormatter = AppValuesFormatter.getInstance();
 
     private final int LIST_SIZE = 7;
 
-    public static CityTempListFragment create() {
-        return new CityTempListFragment();
+    public static TempListFragment create() {
+        return new TempListFragment();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentCityTempListBinding.inflate(inflater, container, false);
+        binding = FragmentTempListBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -49,7 +49,7 @@ public class CityTempListFragment extends Fragment {
         LayoutInflater layoutInflater = getLayoutInflater();
 
         for (int i = 0; i < LIST_SIZE; i++) {
-            View item = layoutInflater.inflate(R.layout.city_temp_item, layoutView, false);
+            View item = layoutInflater.inflate(R.layout.temp_list_item, layoutView, false);
 
             initTextView(item, R.id.dateDayOfTheWeek, valuesFormatter.getDateDayOfTheWeek(i));
             initTextView(item, R.id.dateDayAndMonth, valuesFormatter.getDateDayAndMonth(i));

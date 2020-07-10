@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="switch_theme">Dark theme</string>
+
     <string name="switch_pressure">Show atmosphere pressure</string>
 
     <string name="radio_temp">Temperature scale:</string>
@@ -9,4 +11,6 @@
     <string name="radio_wind">Wind velocity:</string>
     <string name="radio_wind_m">m/s</string>
     <string name="radio_wind_km">km/h</string>
+
+    <string name="settings_button">@android:string/ok</string>
 </resources>

@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/heightTempListRow"
+    android:layout_height="@dimen/sizeTempListRowHeight"
     android:background="@color/colorBackgroundSecondary"
     android:orientation="horizontal"
     android:padding="@dimen/sizeTempListPadding"
@@ -27,6 +27,7 @@
 
     <TextView
         android:id="@+id/textTempDay"
+        style="@style/ColoredTextView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.15"
@@ -47,6 +48,7 @@
 
     <TextView
         android:id="@+id/textTempNight"
+        style="@style/ColoredTextView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.15"

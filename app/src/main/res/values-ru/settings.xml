@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="switch_theme">Тёмная тема</string>
+
     <string name="switch_pressure">Показывать атмосферное давление</string>
 
     <string name="radio_temp">Шкала температуры:</string>
@@ -9,4 +11,6 @@
     <string name="radio_wind">Скорость ветра:</string>
     <string name="radio_wind_m">м/с</string>
     <string name="radio_wind_km">км/ч</string>
+
+    <string name="settings_button">@android:string/ok</string>
 </resources>

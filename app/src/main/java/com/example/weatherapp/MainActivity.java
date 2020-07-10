@@ -2,11 +2,8 @@ package com.example.weatherapp;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,12 +16,13 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
     private ActivityMainBinding binding;
 
     private Publisher publisher = new Publisher();
-
     static CurrentCity city = new CurrentCity();
 
-    private CityHeaderFragment cityHeaderFragment;
-    private CityTempNowFragment cityTempNowFragment;
-    private CityTempListFragment cityTempListFragment;
+    private HeaderFragment headerFragment;
+    private HomeTempFragment homeTempFragment;
+    private TempListFragment tempListFragment;
+    private CitySwapFragment citySwapFragment;
+    private SettingsFragment settingsFragment;
 
     private BottomNavigationView.OnNavigationItemSelectedListener OnNavigationItemSelectedListener;
 
@@ -35,10 +33,22 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
         setContentView(binding.getRoot());
 
         initMenu();
-        initFragments();
 
-        setMainHeader();
-        setDefaultFragments();
+        initHeaderFragment();
+        initHomeFragments();
+
+        setHeaderFragment();
+        setHomeFragments();
+
+        initPublisher();
+        initCurrentCity();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        updateHeaderTextByCurrentCity();
     }
 
     private void initMenu() {
@@ -66,35 +76,45 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
     }
 
     private void clickOnMenuHome() {
+        resetHomeFragments();
     }
 
     private void clickOnMenuSettings() {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivityForResult(intent, Constants.REQ_CODE_SETTINGS);
+        setSettingsFragment();
     }
 
     private void clickOnMenuAbout() {
-        AboutFragment aboutFragment = new AboutFragment();
-        aboutFragment.show(getSupportFragmentManager(), "About");
+        new AboutFragment().show(getSupportFragmentManager(), "About");
     }
 
-    private void initFragments() {
+    private void initCurrentCity() {
         //city.setName(getCurrentCityText(), false);
+    }
 
+    private void initHeaderFragment() {
+        headerFragment = HeaderFragment.create();
+    }
+
+    private void initHomeFragments() {
+        homeTempFragment = HomeTempFragment.create();
+        tempListFragment = TempListFragment.create();
+    }
+
+    private void initPublisher() {
         publisher.subscribe(this);
         city.setPublisher(publisher);
-
-        cityHeaderFragment = CityHeaderFragment.create();
-        cityTempNowFragment = CityTempNowFragment.create();
-        cityTempListFragment = CityTempListFragment.create();
     }
 
-//    private String getCurrentCityText() {
-//        return ((TextView) findViewById(R.id.currentCity)).getText().toString();
-//    }
+    private void initCitySwapFragment() {
+        if (citySwapFragment == null) {
+            citySwapFragment = CitySwapFragment.create();
+        }
+    }
 
-    private void setCurrentCityText(String name) {
-        ((TextView) findViewById(R.id.currentCity)).setText(name);
+    private void initSettingsFragment() {
+        if (settingsFragment == null) {
+            settingsFragment = SettingsFragment.create();
+        }
     }
 
     @Override
@@ -108,7 +128,6 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
     public void startReplaceFragmentsTransaction(int containerId, Fragment fragment) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(containerId, fragment);
-        ft.addToBackStack(null);
         ft.commit();
     }
 
@@ -116,43 +135,60 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
     public void startRemoveFragmentsTransaction(Fragment fragment) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.remove(fragment);
-        ft.addToBackStack(null);
         ft.commit();
     }
 
     @Override
-    public void startPopBackStack() {
-        getSupportFragmentManager().popBackStack();
-    }
-
-    private void setMainHeader() {
-        startAddFragmentsTransaction(R.id.fragment_container_header, cityHeaderFragment);
+    public void setHeaderFragment() {
+        startAddFragmentsTransaction(R.id.container_header, headerFragment);
     }
 
     @Override
-    public void setDefaultFragments() {
-        startAddFragmentsTransaction(R.id.fragment_container_temp_now, cityTempNowFragment);
-        startAddFragmentsTransaction(R.id.fragment_container_main, cityTempListFragment);
+    public void setHomeFragments() {
+        startAddFragmentsTransaction(R.id.container_main, homeTempFragment);
+        startAddFragmentsTransaction(R.id.container_footer, tempListFragment);
     }
 
     @Override
-    public void resetDefaultFragments() {
-        startReplaceFragmentsTransaction(R.id.fragment_container_temp_now, cityTempNowFragment);
-        startReplaceFragmentsTransaction(R.id.fragment_container_main, cityTempListFragment);
+    public void resetHomeFragments() {
+        updateHeaderTextByCurrentCity();
+        startReplaceFragmentsTransaction(R.id.container_main, homeTempFragment);
+        startReplaceFragmentsTransaction(R.id.container_footer, tempListFragment);
     }
 
     @Override
-    public void removeCurrentTempFragment() {
-        startRemoveFragmentsTransaction(cityTempNowFragment);
+    public void setCitySwapFragment() {
+        initCitySwapFragment();
+        startReplaceFragmentsTransaction(R.id.container_main, citySwapFragment);
+        startRemoveFragmentsTransaction(tempListFragment);
+    }
+
+    @Override
+    public void setSettingsFragment() {
+        initSettingsFragment();
+        updateHeaderTextForSettings();
+        startReplaceFragmentsTransaction(R.id.container_main, settingsFragment);
+        startRemoveFragmentsTransaction(tempListFragment);
+    }
+
+    private void updateHeaderTextByCurrentCity() {
+        setHeaderText(city.getName());
+    }
+
+    private void updateHeaderTextForSettings() {
+        setHeaderText(getResources().getString(R.string.title_settings));
+    }
+
+    private void setHeaderText(String text) {
+        headerFragment.setHeaderText(text);
     }
 
     @Override
     public void updateCurrentCity() {
-        setCurrentCityText(city.getName());
+        updateHeaderTextByCurrentCity();
     }
 
-    private void log(String message) {
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-        Log.d("INFO", message);
+    protected void showToast(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 }

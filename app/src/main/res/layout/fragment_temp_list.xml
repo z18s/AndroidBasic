@@ -4,6 +4,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <include layout="@layout/city_temp_header" />
+    <include layout="@layout/temp_list_header" />
 
 </LinearLayout>
