@@ -80,7 +80,7 @@ public class CitySwapFragment extends Fragment {
         binding.citiesListContainer.setAdapter(adapter);
 
         adapter.setList(citiesList);
-        adapter.setOnClickListener(position -> selectCityByList(view, position));
+        adapter.setOnClickListener((position) -> selectCityByList(view, position));
     }
 
     private void initListeners() {
