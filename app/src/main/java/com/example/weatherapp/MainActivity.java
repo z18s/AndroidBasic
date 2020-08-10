@@ -2,21 +2,28 @@ package com.example.weatherapp;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
-import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.weatherapp.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity implements ITransactionController, Observer {
+import java.net.MalformedURLException;
+import java.util.Observable;
+import java.util.Observer;
+
+public class MainActivity extends AppCompatActivity implements ITransactionController, IConnectionController, Observer {
 
     private ActivityMainBinding binding;
+    private AppConnection connection;
 
-    private Publisher publisher = new Publisher();
-    static CurrentCity city = new CurrentCity();
+    private AppValuesFormatter valuesFormatter = AppValuesFormatter.getInstance();
+    private String homeCity = "London,uk";
 
     private HeaderFragment headerFragment;
     private HomeTempFragment homeTempFragment;
@@ -26,11 +33,15 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
 
     private BottomNavigationView.OnNavigationItemSelectedListener OnNavigationItemSelectedListener;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
+
+        initObserver();
+        initConnection(new AppConnection(homeCity));
 
         initMenu();
 
@@ -39,16 +50,25 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
 
         setHeaderFragment();
         setHomeFragments();
-
-        initPublisher();
-        initCurrentCity();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    protected void onResume() {
-        super.onResume();
+    public void initConnection(AppConnection connection) {
+        final Handler handler = new Handler();
+        this.connection = connection;
 
-        updateHeaderTextByCurrentCity();
+        new Thread(() -> {
+            try {
+                connection.connect(handler);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
+    private void initObserver() {
+        valuesFormatter.addObserver(this);
     }
 
     private void initMenu() {
@@ -87,10 +107,6 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
         new AboutFragment().show(getSupportFragmentManager(), "About");
     }
 
-    private void initCurrentCity() {
-        //city.setName(getCurrentCityText(), false);
-    }
-
     private void initHeaderFragment() {
         headerFragment = HeaderFragment.create();
     }
@@ -98,11 +114,6 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
     private void initHomeFragments() {
         homeTempFragment = HomeTempFragment.create();
         tempListFragment = TempListFragment.create();
-    }
-
-    private void initPublisher() {
-        publisher.subscribe(this);
-        city.setPublisher(publisher);
     }
 
     private void initCitySwapFragment() {
@@ -151,7 +162,6 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
 
     @Override
     public void resetHomeFragments() {
-        updateHeaderTextByCurrentCity();
         startReplaceFragmentsTransaction(R.id.container_main, homeTempFragment);
         startReplaceFragmentsTransaction(R.id.container_footer, tempListFragment);
     }
@@ -171,8 +181,8 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
         startRemoveFragmentsTransaction(tempListFragment);
     }
 
-    private void updateHeaderTextByCurrentCity() {
-        setHeaderText(city.getName());
+    private void updateHeaderTextByCity() {
+        setHeaderText(valuesFormatter.getWeather().getName());
     }
 
     private void updateHeaderTextForSettings() {
@@ -183,12 +193,12 @@ public class MainActivity extends AppCompatActivity implements ITransactionContr
         headerFragment.setHeaderText(text);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    public void updateCurrentCity() {
-        updateHeaderTextByCurrentCity();
-    }
+    public void update(Observable observable, Object o) {
+        updateHeaderTextByCity();
 
-    protected void showToast(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+        homeTempFragment.updateData();
+        tempListFragment.updateData();
     }
 }

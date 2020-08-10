@@ -2,14 +2,19 @@ package com.example.weatherapp;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.util.Log;
 
-import java.util.Random;
+import com.example.weatherapp.model.WeatherData;
 
-public final class AppValuesFormatter {
+import java.util.Observable;
+
+public final class AppValuesFormatter extends Observable {
 
     private static AppValuesFormatter instance;
 
     private AppCalendar calendar = AppCalendar.getInstance();
+
+    private WeatherData weather;
 
     static {
         instance = new AppValuesFormatter();
@@ -20,6 +25,19 @@ public final class AppValuesFormatter {
 
     public static AppValuesFormatter getInstance() {
         return instance;
+    }
+
+    public WeatherData getWeather() {
+        return weather;
+    }
+
+    public void setWeather(WeatherData weather) {
+        this.weather = weather;
+
+        Log.d("DEBUG_ValuesFormatter", "notifyObservers");
+
+        setChanged();
+        notifyObservers(weather);
     }
 
     public String getDateDayOfTheWeek(int i) {
@@ -33,8 +51,20 @@ public final class AppValuesFormatter {
         return calendar.getDateString(i, "dd/MM");
     }
 
-    public String getTempString(Context context, int min, int max) {
-        int temp = getTempValue(min, max);
+    public String getTempCurrentString(Context context) {
+        return getTempString(context, getTempValue());
+    }
+
+    public String getTempMinString(Context context) {
+        return getTempString(context, getTempMinValue());
+    }
+
+    public String getTempMaxString(Context context) {
+        return getTempString(context, getTempMaxValue());
+    }
+
+    public String getTempString(Context context, double tempKelvin) {
+        int temp = (int) (tempKelvin - 273.15f);
         String[] tempSigns = context.getResources().getStringArray(R.array.temp_signs);
         String tempSign = tempSigns[0];
         if (temp > 0) {
@@ -55,6 +85,29 @@ public final class AppValuesFormatter {
         }
     }
 
+    public int getTempDayIconId(Context context) {
+        int[] resIds = getIdsFromArrayResources(context, R.array.icon_day);
+        return resIds[0];
+    }
+
+    public int getTempNightIconId(Context context) {
+        int[] resIds = getIdsFromArrayResources(context, R.array.icon_night);
+        return resIds[0];
+    }
+
+    public String getWindVelocityString() {
+        return String.format("%.1f", getWindVelocityValue());
+    }
+
+    public String getWindDirectionString(Context context) {
+        String[] windDirections = context.getResources().getStringArray(R.array.windDirections);
+        int zone = Math.round(getWindDirectionDegree() / 45.0f);
+        if (zone > 7) {
+            zone %= 7;
+        }
+        return windDirections[zone];
+    }
+
     public int[] getIdsFromArrayResources(Context context, int arrayId) {
         TypedArray resArray = context.getResources().obtainTypedArray(arrayId);
 
@@ -68,28 +121,29 @@ public final class AppValuesFormatter {
         return resIds;
     }
 
-    // Values filled by Random
-
-    public int getTempValue(int min, int max) {
-        return new Random().nextInt(max - min) + min;
+    public String getDefaultString() {
+        return "";
     }
 
-    public int getTempDayIconId(Context context) {
-        int[] resIds = getIdsFromArrayResources(context, R.array.icon_day);
-        return resIds[new Random().nextInt(resIds.length)];
+    // Values filled by WeatherData
+
+    public double getTempValue() {
+        return weather.getMain().getTemp();
     }
 
-    public int getTempNightIconId(Context context) {
-        int[] resIds = getIdsFromArrayResources(context, R.array.icon_night);
-        return resIds[new Random().nextInt(resIds.length)];
+    public double getTempMinValue() {
+        return weather.getMain().getTempMin();
     }
 
-    public int getWindVelocityValue(int min, int max) {
-        return new Random().nextInt(max - min) + min;
+    public double getTempMaxValue() {
+        return weather.getMain().getTempMax();
     }
 
-    public String getWindDirectionValue(Context context) {
-        String[] windDirections = context.getResources().getStringArray(R.array.windDirections);
-        return windDirections[new Random().nextInt(8)];
+    public double getWindVelocityValue() {
+        return weather.getWind().getSpeed();
+    }
+
+    public int getWindDirectionDegree() {
+        return weather.getWind().getDeg();
     }
 }
