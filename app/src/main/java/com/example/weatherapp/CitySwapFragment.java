@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.weatherapp.databinding.FragmentCitySwapBinding;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,6 +23,7 @@ public class CitySwapFragment extends Fragment {
 
     private FragmentCitySwapBinding binding;
     private ITransactionController transactionController;
+    private IConnectionController connectionController;
 
     private List<String> citiesList;
     private String chosenCity = null;
@@ -52,6 +52,7 @@ public class CitySwapFragment extends Fragment {
         super.onAttach(activity);
 
         transactionController = (ITransactionController) activity;
+        connectionController = (IConnectionController) activity;
     }
 
     private void initCitiesList(View view) {
@@ -98,28 +99,19 @@ public class CitySwapFragment extends Fragment {
     private void selectCityButtonListener() {
         binding.buttonSwapCity.setOnClickListener((view) -> {
             chosenCity = binding.textCitySelect.getText().toString();
-            confirmChoice(view);
+            returnBack();
         });
     }
 
     private void selectCityByList(View view, int position) {
         chosenCity = citiesList.get(position);
-        confirmChoice(view);
-    }
-
-    private void confirmChoice(View view) {
-        String textConfirmMessage = getResources().getString(R.string.city_swap_confirm_text);
-        String textConfirmButton = getResources().getString(R.string.city_swap_confirm_button);
-        Snackbar.make(view, textConfirmMessage, Snackbar.LENGTH_LONG)
-                .setAction(textConfirmButton, (v) -> {
-                    returnBack();
-                }).show();
+        returnBack();
     }
 
     private void returnBack() {
         if (chosenCity != null && !chosenCity.equals("")) {
+            connectionController.initConnection(new AppConnection(chosenCity));
             transactionController.resetHomeFragments();
-            MainActivity.city.setName(chosenCity);
             chosenCity = null;
         }
     }

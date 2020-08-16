@@ -3,6 +3,7 @@ package com.example.weatherapp;
 import android.app.Fragment;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,7 @@ public class TempListFragment extends Fragment {
 
     private AppValuesFormatter valuesFormatter = AppValuesFormatter.getInstance();
 
-    private final int LIST_SIZE = 7;
+    private final int LIST_SIZE = 1;
 
     public static TempListFragment create() {
         return new TempListFragment();
@@ -39,29 +40,6 @@ public class TempListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        initList(view);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private void initList(View view) {
-        LinearLayout layoutView = (LinearLayout) view;
-        LayoutInflater layoutInflater = getLayoutInflater();
-
-        for (int i = 0; i < LIST_SIZE; i++) {
-            View item = layoutInflater.inflate(R.layout.temp_list_item, layoutView, false);
-
-            initTextView(item, R.id.dateDayOfTheWeek, valuesFormatter.getDateDayOfTheWeek(i));
-            initTextView(item, R.id.dateDayAndMonth, valuesFormatter.getDateDayAndMonth(i));
-            initTextView(item, R.id.textTempDay, valuesFormatter.getTempString(view.getContext(), 10, 20), true);
-            initImageView(item, R.id.iconTempDay, valuesFormatter.getTempDayIconId(view.getContext()));
-            initTextView(item, R.id.textTempNight, valuesFormatter.getTempString(view.getContext(), -5, 5), true);
-            initImageView(item, R.id.iconTempNight, valuesFormatter.getTempNightIconId(view.getContext()));
-            initTextView(item, R.id.windVelocity, String.valueOf(valuesFormatter.getWindVelocityValue(1, 4)));
-            initTextView(item, R.id.windDirection, valuesFormatter.getWindDirectionValue(view.getContext()));
-
-            layoutView.addView(item);
-        }
     }
 
     private void initTextView(View view, int viewId, String text) {
@@ -79,5 +57,29 @@ public class TempListFragment extends Fragment {
     private void initImageView(View view, int viewId, int imageId) {
         ImageView imageView = view.findViewById(viewId);
         imageView.setImageResource(imageId);
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void updateData() {
+        LinearLayout layoutView = (LinearLayout) this.getView();
+        LayoutInflater layoutInflater = getLayoutInflater();
+
+        for (int i = 0; i < LIST_SIZE; i++) {
+            View item = layoutInflater.inflate(R.layout.temp_list_item, layoutView, false);
+
+            initTextView(item, R.id.dateDayOfTheWeek, valuesFormatter.getDateDayOfTheWeek(i));
+            initTextView(item, R.id.dateDayAndMonth, valuesFormatter.getDateDayAndMonth(i));
+            initTextView(item, R.id.textTempDay, valuesFormatter.getTempMaxString(this.getContext()), true);
+            initImageView(item, R.id.iconTempDay, valuesFormatter.getTempDayIconId(this.getContext()));
+            initTextView(item, R.id.textTempNight, valuesFormatter.getTempMinString(this.getContext()), true);
+            initImageView(item, R.id.iconTempNight, valuesFormatter.getTempNightIconId(this.getContext()));
+            initTextView(item, R.id.windVelocity, valuesFormatter.getWindVelocityString());
+            initTextView(item, R.id.windDirection, valuesFormatter.getWindDirectionString(this.getContext()));
+
+            layoutView.addView(item);
+        }
+
+        Log.d("DEBUG_TempListFragment", "updateData");
     }
 }

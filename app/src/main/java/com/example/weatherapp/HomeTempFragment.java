@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import com.example.weatherapp.databinding.FragmentHomeTempBinding;
 
@@ -54,7 +57,7 @@ public class HomeTempFragment extends Fragment {
     private void initFragment(View view) {
         initDate();
 
-        initTextView(view, R.id.textTempNow, valuesFormatter.getTempString(view.getContext(), 15, 25), true);
+        initTextView(view, R.id.textTempNow, valuesFormatter.getDefaultString());
         initTextView(view, R.id.textTempScale, getResources().getString(R.string.celsius));
         initImageView(view, R.id.iconTempNow, valuesFormatter.getTempDayIconId(view.getContext()));
     }
@@ -100,5 +103,14 @@ public class HomeTempFragment extends Fragment {
         binding.iconSwapCity.setOnClickListener((view) -> {
             transactionController.setCitySwapFragment();
         });
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void updateData() {
+        initTextView(this.getView(), R.id.textTempNow, valuesFormatter.getTempCurrentString(this.getContext()), true);
+        initTextView(this.getView(), R.id.textTempScale, getResources().getString(R.string.celsius));
+        initImageView(this.getView(), R.id.iconTempNow, valuesFormatter.getTempDayIconId(this.getContext()));
+
+        Log.d("DEBUG_HomeTempFragment", "updateData");
     }
 }
